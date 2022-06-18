@@ -1,38 +1,38 @@
 <div *ngIf="viewMode; else editable">
   <div *ngIf="currentTutorial.id">
-    <h4>Tutorial</h4>
+    <h4>{{ 'EXAMENES.EXAMEN' | translate }}</h4>
     <div>
-      <label><strong>Title:</strong></label> {{ currentTutorial.title }}
+      <label><strong>{{ 'EXAMENES.TITULO' | translate }}:</strong></label> {{ currentTutorial.title }}
     </div>
     <div>
-      <label><strong>Description:</strong></label>
+      <label><strong>{{ 'EXAMENES.DESCRIPCION' | translate }}:</strong></label>
       {{ currentTutorial.description }}
     </div>
     <div>
-      <label><strong>Status:</strong></label>
-      {{ currentTutorial.published ? "Published" : "Pending" }}
+      <label><strong>{{ 'EXAMENES.STATUS' | translate }}:</strong></label>
+      {{ (currentTutorial.published ? "EXAMENES.PUBLICADO" : "EXAMENES.PENDIENTE") | translate }}
     </div>
 
     <a
       class="badge badge-warning"
       routerLink="/tutorials/{{ currentTutorial.id }}"
     >
-      Edit
+    {{ 'BUTTONS.EDITAR' | translate }}
     </a>
   </div>
 
   <div *ngIf="!currentTutorial">
     <br />
-    <p>Please click on a Tutorial...</p>
+    <p>{{ 'EXAMENES.CLICK_EXAMEN' | translate }}</p>
   </div>
 </div>
 
 <ng-template #editable>
   <div *ngIf="currentTutorial.id" class="edit-form">
-    <h4>Tutorial</h4>
+    <h4>{{ 'EXAMENES.EXAMEN' | translate }}</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">{{ 'EXAMENES.TITULO' | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -42,7 +42,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">{{ 'EXAMENES.DESCRIPCION' | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -53,8 +53,8 @@
       </div>
 
       <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
+        <label><strong>{{ 'EXAMENES.STATUS' | translate }}:</strong></label>
+        {{ (currentTutorial.published ? "EXAMENES.PUBLICADO" : "EXAMENES.PENDIENTE") | translate }}
       </div>
     </form>
 
@@ -63,18 +63,18 @@
       *ngIf="currentTutorial.published"
       (click)="updatePublished(false)"
     >
-      UnPublish
+    {{ 'BUTTONS.RESCINDIR' | translate }}
     </button>
     <button
       *ngIf="!currentTutorial.published"
       class="badge badge-primary mr-2"
       (click)="updatePublished(true)"
     >
-      Publish
+    {{ 'BUTTONS.PUBLICAR' | translate }}
     </button>
 
     <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
-      Delete
+      {{ 'BUTTONS.ELIMINAR' | translate }}
     </button>
 
     <button
@@ -82,13 +82,13 @@
       class="badge badge-success mb-2"
       (click)="updateTutorial()"
     >
-      Update
+    {{ 'BUTTONS.MODIFICAR' | translate }}
     </button>
     <p>{{ message }}</p>
   </div>
 
   <div *ngIf="!currentTutorial.id">
     <br />
-    <p>Cannot access this Tutorial...</p>
+    <p>{{ 'EXAMENES.ERROR_ACCESO' | translate }}</p>
   </div>
 </ng-template>

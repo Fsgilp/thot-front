@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tutorials-list',
@@ -14,7 +15,8 @@ export class TutorialsListComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private tutorialService: TutorialService,
+    private translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.retrieveTutorials();
@@ -43,7 +45,10 @@ export class TutorialsListComponent implements OnInit {
   }
 
   removeAllTutorials(): void {
-    this.tutorialService.deleteAll()
+    if(confirm( this.translateService.instant(
+      'GENERICO.MENSAJE_CONFIRMACIÓN'
+    ))) {
+      this.tutorialService.deleteAll()
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -51,6 +56,7 @@ export class TutorialsListComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+    }
   }
 
   searchTitle(): void {

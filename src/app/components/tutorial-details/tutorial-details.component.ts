@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tutorial } from 'src/app/models/tutorial.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tutorial-details',
@@ -17,12 +18,13 @@ export class TutorialDetailsComponent implements OnInit {
     description: '',
     published: false
   };
-  
+
   message = '';
 
   constructor(
     private tutorialService: TutorialService,
     private route: ActivatedRoute,
+    private translateService: TranslateService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -57,7 +59,9 @@ export class TutorialDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.currentTutorial.published = status;
-          this.message = res.message ? res.message : 'The status was updated successfully!';
+          this.message = res.message ? res.message :  this.translateService.instant(
+            'EXAMENES.MENSAJE_STATUS'
+          );
         },
         error: (e) => console.error(e)
       });
@@ -70,7 +74,9 @@ export class TutorialDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.message = res.message ? res.message : 'This tutorial was updated successfully!';
+          this.message = res.message ? res.message :  this.translateService.instant(
+            'EXAMENES.MENSAJE_EDICION'
+          );
         },
         error: (e) => console.error(e)
       });
