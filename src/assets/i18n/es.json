@@ -20,6 +20,9 @@
     "EXAMENES": "Exámenes",
     "AÑADIR_EXAMEN": "Añadir examen",
     "USUARIOS": "Usuarios",
+    "LOGIN": "Entrar",
+    "LOGOUT": "Salir",
+    "PROFILE": "Perfil",
     "AÑADIR_USUARIO": "Registro"
   },
   "GENERICO": {
@@ -55,5 +58,7 @@
     "MENSAJE_EDICION": "El usuario ha sido actualizado con éxito",
     "ERROR_ACCESO": "No se puede acceder al usuario requerido"
   },
-  "TITULO": "Thot"
+  "TITULO": "Thot",
+  "COPYRIGHT": "© 2022 Copyright: Ángel Muñoz - ",
+  "EMAIL": "info@angelmunoz.es"
 }

@@ -1,23 +1,74 @@
 <div>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">{{ 'TITULO' | translate }}</a>
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a routerLink="tutorials" class="nav-link">{{ 'LINKS.EXAMENES' | translate }}</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="add" class="nav-link">{{ 'LINKS.AÑADIR_EXAMEN' | translate }}</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="users" class="nav-link">{{ 'LINKS.USUARIOS' | translate }}</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="user/add" class="nav-link">{{ 'LINKS.AÑADIR_USUARIO' | translate }}</a>
-      </li>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand">{{ "TITULO" | translate }}</a>
+      <button
+        type="button"
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="tutorials" class="nav-link" href="#">{{
+              "LINKS.EXAMENES" | translate
+            }}</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="add" class="nav-link" href="#">{{
+              "LINKS.AÑADIR_EXAMEN" | translate
+            }}</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="users" class="nav-link">{{
+              "LINKS.USUARIOS" | translate
+            }}</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-item nav-link">Contact</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a routerLink="user/add" class="nav-link">{{
+              "LINKS.AÑADIR_USUARIO" | translate
+            }}</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link" routerLink="login">{{
+              "LINKS.LOGIN" | translate
+            }}</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a href="/profile" class="nav-link" routerLink="profile">{{
+              "LINKS.PROFILE" | translate
+            }}</a>
+          </li>
+          <li class="nav-item">
+            <a href class="nav-link" (click)="logout()">{{
+              "LINKS.LOGOUT" | translate
+            }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-
   <div class="container mt-3">
     <router-outlet></router-outlet>
   </div>
 </div>
+<footer>
+  <!-- Copyright -->
+  <div class="text-center p-4">
+    {{ "COPYRIGHT" | translate }}
+    <a class="text-reset fw-bold" href='mailto:{{ "EMAIL" | translate }}'>{{ "EMAIL" | translate }}</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
