@@ -1,0 +1,94 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentUser.id">
+    <h4>{{ 'USUARIOS.USUARIO' | translate }}</h4>
+    <div>
+      <label><strong>{{ 'USUARIOS.EMAIL' | translate }}:</strong></label> {{ currentUser.email }}
+    </div>
+    <div>
+      <label><strong>{{ 'USUARIOS.NOMBRE' | translate }}:</strong></label>
+      {{ currentUser.name }}
+    </div>
+    <div>
+      <label><strong>{{ 'USUARIOS.STATUS' | translate }}:</strong></label>
+      {{ (currentUser.active ? "USUARIOS.ACTIVO" : "USUARIOS.INACTIVO") | translate }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/users/{{ currentUser.id }}"
+    >
+    {{ 'BUTTONS.EDITAR' | translate }}
+    </a>
+  </div>
+
+  <div *ngIf="!currentUser">
+    <br />
+    <p>{{ 'USUARIOS.CLICK_USUARIO' | translate }}</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentUser.id" class="edit-form">
+    <h4>{{ 'USUARIOS.USUARIO' | translate }}</h4>
+    <form>
+      <div class="form-group">
+        <label for="email">{{ 'USUARIOS.EMAIL' | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          [(ngModel)]="currentUser.email"
+          name="email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">{{ 'USUARIOS.NOMBRE' | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentUser.name"
+          name="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label><strong>{{ 'USUARIOS.STATUS' | translate }}:</strong></label>
+        {{ (currentUser.active ? "USUARIOS.ACTIVO" : "USUARIOS.INACTIVO") | translate }}
+      </div>
+    </form>
+
+    <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentUser.active"
+      (click)="updateActive(false)"
+    >
+    {{ 'BUTTONS.DESACTIVAR' | translate }}
+    </button>
+    <button
+      *ngIf="!currentUser.active"
+      class="badge badge-primary mr-2"
+      (click)="updateActive(true)"
+    >
+    {{ 'BUTTONS.ACTIVAR' | translate }}
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteUser()">
+      {{ 'BUTTONS.ELIMINAR' | translate }}
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateUser()"
+    >
+    {{ 'BUTTONS.MODIFICAR' | translate }}
+    </button>
+    <!--<p>{{ message }}</p>-->
+  </div>
+
+  <div *ngIf="!currentUser.id">
+    <br />
+    <p>{{ 'USUARIOS.ERROR_ACCESO' | translate }}</p>
+  </div>
+</ng-template>

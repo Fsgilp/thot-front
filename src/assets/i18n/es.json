@@ -10,6 +10,8 @@
     "EDITAR": "Editar",
     "MODIFICAR": "Modificar",
     "PUBLICAR": "Publicar",
+    "ACTIVAR": "Activar",
+    "DESACTIVAR": "Desactivar",
     "RESCINDIR": "Rescindir",
     "GUARDAR": "Guardar",
     "GUARDAR_OTRO": "Guardar otro"
@@ -18,7 +20,7 @@
     "EXAMENES": "Exámenes",
     "AÑADIR_EXAMEN": "Añadir examen",
     "USUARIOS": "Usuarios",
-    "AÑADIR_USUARIO": "Añadir usuario"
+    "AÑADIR_USUARIO": "Registro"
   },
   "GENERICO": {
     "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?"
@@ -37,6 +39,21 @@
     "MENSAJE_STATUS": "El estatus del examen ha sido actualizado con éxito",
     "MENSAJE_EDICION": "El examen ha sido actualizado con éxito",
     "ERROR_ACCESO": "No se puede acceder al examen requerido"
+  },
+  "USUARIOS": {
+    "LISTA": "Lista de usuarios",
+    "USUARIO": "Usuario",
+    "BUSCAR_POR_EMAIL": "Buscar por email",
+    "EMAIL": "Email",
+    "NOMBRE": "Nombre",
+    "STATUS": "Estatus",
+    "ACTIVO": "Activo",
+    "INACTIVO": "Desactivado",
+    "MENSAJE_ACTIVAR": "El usuario ha sido activado con éxito",
+    "CLICK_USUARIO": "Por favor, haga click en un usuario",
+    "MENSAJE_USUARIO": "El estatus del usuario ha sido actualizado con éxito",
+    "MENSAJE_EDICION": "El usuario ha sido actualizado con éxito",
+    "ERROR_ACCESO": "No se puede acceder al usuario requerido"
   },
   "TITULO": "Thot"
 }
