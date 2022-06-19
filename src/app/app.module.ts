@@ -15,6 +15,7 @@ import { TutorialsListComponent } from './components/tutorials-list/tutorials-li
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TutorialsListComponent,
     AddUserComponent,
     UserDetailsComponent,
-    UsersListComponent
+    UsersListComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

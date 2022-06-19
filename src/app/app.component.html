@@ -28,7 +28,9 @@
             }}</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-item nav-link">Contact</a>
+            <a routerLink="contact" class="nav-item nav-link">{{
+              "LINKS.CONTACTO" | translate
+            }}</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -71,4 +73,3 @@
   </div>
   <!-- Copyright -->
 </footer>
-<!-- Footer -->

@@ -6,9 +6,11 @@ import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.com
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
+  { path: 'contact', component: ContactFormComponent },
   { path: 'tutorials', component: TutorialsListComponent },
   { path: 'tutorials/:id', component: TutorialDetailsComponent },
   { path: 'add', component: AddTutorialComponent },
