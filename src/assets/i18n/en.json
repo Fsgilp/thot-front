@@ -1,0 +1,65 @@
+{
+  "BUTTONS": {
+    "ALTA": "Alta",
+    "ELIMINAR": "Eliminar",
+    "ELIMINAR_TODOS": "Eliminar todos",
+    "CANCELAR": "Cancelar",
+    "ACEPTAR": "Aceptar",
+    "VER_DETALLES": "Ver detalles",
+    "BUSCAR": "Buscar",
+    "EDITAR": "Editar",
+    "MODIFICAR": "Modificar",
+    "PUBLICAR": "Publicar",
+    "ACTIVAR": "Activar",
+    "DESACTIVAR": "Desactivar",
+    "RESCINDIR": "Rescindir",
+    "GUARDAR": "Guardar",
+    "GUARDAR_OTRO": "Guardar otro"
+  },
+  "LINKS": {
+    "EXAMENES": "Tests",
+    "AÑADIR_EXAMEN": "Add test",
+    "USUARIOS": "Users",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "PROFILE": "Profile",
+    "CONTACTO": "Contact",
+    "AÑADIR_USUARIO": "Signup"
+  },
+  "GENERICO": {
+    "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?"
+  },
+  "EXAMENES": {
+    "LISTA": "Lista de exámenes",
+    "EXAMEN": "Examen",
+    "BUSCAR_POR_TITULO": "Buscar por título",
+    "TITULO": "Título",
+    "DESCRIPCION": "Descripción",
+    "STATUS": "Estatus",
+    "PUBLICADO": "Publicado",
+    "PENDIENTE": "Pendiente de publicación",
+    "MENSAJE_PUBLICAR": "El examen ha sido publicado con éxito",
+    "CLICK_EXAMEN": "Por favor, haga click en un examen",
+    "MENSAJE_STATUS": "El estatus del examen ha sido actualizado con éxito",
+    "MENSAJE_EDICION": "El examen ha sido actualizado con éxito",
+    "ERROR_ACCESO": "No se puede acceder al examen requerido"
+  },
+  "USUARIOS": {
+    "LISTA": "Lista de usuarios",
+    "USUARIO": "Usuario",
+    "BUSCAR_POR_EMAIL": "Buscar por email",
+    "EMAIL": "Email",
+    "NOMBRE": "Nombre",
+    "STATUS": "Estatus",
+    "ACTIVO": "Activo",
+    "INACTIVO": "Desactivado",
+    "MENSAJE_ACTIVAR": "El usuario ha sido activado con éxito",
+    "CLICK_USUARIO": "Por favor, haga click en un usuario",
+    "MENSAJE_USUARIO": "El estatus del usuario ha sido actualizado con éxito",
+    "MENSAJE_EDICION": "El usuario ha sido actualizado con éxito",
+    "ERROR_ACCESO": "No se puede acceder al usuario requerido"
+  },
+  "TITULO": "Thot",
+  "COPYRIGHT": "© 2022 Copyright: Ángel Muñoz - ",
+  "EMAIL": "info@angelmunoz.es"
+}

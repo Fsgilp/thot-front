@@ -15,14 +15,18 @@ export class AppComponent {
   showUserBoard = false;
   showModeratorBoard = false;
   username?: string;
+  selectedLanguage = 'es';
+  //idiomas: any[] =[{lang: 'es', texto}]
 
   constructor(
-    private translate: TranslateService,
+    public translate: TranslateService,
     private authService: AuthService,
     private storageService: StorageService
   ) {
-    translate.setDefaultLang('es');
-    translate.use('es');
+    translate.addLangs(['es', 'en']);
+    translate.setDefaultLang(this.selectedLanguage);
+    //const browserLang = translate.getBrowserLang();
+    translate.use(this.selectedLanguage);
   }
 
   ngOnInit(): void {
@@ -52,5 +56,9 @@ export class AppComponent {
     });
 
     window.location.reload();
+  }
+
+  selectLanguage(lang: string) {
+    this.translate.use(lang);
   }
 }

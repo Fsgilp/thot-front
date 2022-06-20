@@ -44,6 +44,20 @@
               "LINKS.LOGIN" | translate
             }}</a>
           </li>
+          <li>
+            <span class="form-inline">
+              <select
+                  class="form-control"
+                  #selectedLang
+                  (change)="selectLanguage(selectedLang.value)">
+                <option *ngFor="let language of translate.getLangs()"
+                  [value]="language"
+                  [selected]="language === translate.currentLang">
+                  {{ language }}
+                </option>
+              </select>
+            </span>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
@@ -57,6 +71,20 @@
               "LINKS.LOGOUT" | translate
             }}</a>
           </li>
+          <li class="nav-item">
+            <span class="form-inline">
+              <select
+                  class="form-control"
+                  #selectedLang
+                  (change)="selectLanguage(selectedLang.value)">
+                <option *ngFor="let language of translate.getLangs()"
+                  [value]="language"
+                  [selected]="language === translate.currentLang">
+                  {{ language }}
+                </option>
+              </select>
+            </span>
+          </li>
         </ul>
       </div>
     </div>
@@ -67,7 +95,7 @@
 </div>
 <footer>
   <!-- Copyright -->
-  <div class="text-center p-4">
+  <div class="text-center p-4 fixed-bottom">
     {{ "COPYRIGHT" | translate }}
     <a class="text-reset fw-bold" href='mailto:{{ "EMAIL" | translate }}'>{{ "EMAIL" | translate }}</a>
   </div>
