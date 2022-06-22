@@ -50,11 +50,16 @@
                   class="form-control"
                   #selectedLang
                   (change)="selectLanguage(selectedLang.value)">
-                <option *ngFor="let language of translate.getLangs()"
+                  <option *ngFor="let idioma of idiomas" [value]="idioma.value">
+                    <img src='{{idioma.img}}'> {{
+                      idioma.viewValue | translate
+                    }}
+                  </option>
+                <!--<option *ngFor="let language of translate.getLangs()"
                   [value]="language"
                   [selected]="language === translate.currentLang">
-                  {{ language }}
-                </option>
+                  <img alt="My image name" src="./assets/img/espana.png">{{ language }}
+                </option>-->
               </select>
             </span>
           </li>
@@ -80,7 +85,7 @@
                 <option *ngFor="let language of translate.getLangs()"
                   [value]="language"
                   [selected]="language === translate.currentLang">
-                  {{ language }}
+                    <img alt="My image name" src="./assets/img/espana.png">{{ language }}
                 </option>
               </select>
             </span>

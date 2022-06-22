@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from './services/storage.service';
 import { AuthService } from './services/auth.service';
+
+export interface Idioma {
+  value: string;
+  viewValue: string;
+  img: string;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +22,10 @@ export class AppComponent {
   showModeratorBoard = false;
   username?: string;
   selectedLanguage = 'es';
-  //idiomas: any[] =[{lang: 'es', texto}]
+  idiomas: Idioma[] = [
+    { value: 'es', viewValue: 'IDIOMA.ESPANOL', img: 'https://www.akberiqbal.com/favicon-32x32.png' },
+    { value: 'en', viewValue: 'IDIOMA.INGLES', img: 'https://www.akberiqbal.com/favicon-16x16.png' }
+  ];
 
   constructor(
     public translate: TranslateService,

@@ -61,5 +61,9 @@
   },
   "TITULO": "Thot",
   "COPYRIGHT": "© 2022 Copyright: Ángel Muñoz - ",
-  "EMAIL": "info@angelmunoz.es"
+  "EMAIL": "info@angelmunoz.es",
+  "IDIOMA": {
+    "ESPANOL": "Español",
+    "INGLES": "Inglés"
+  }
 }
