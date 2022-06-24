@@ -10,12 +10,12 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactFormComponent implements OnInit {
 
-  formData!: FormGroup;
+  contactForm!: FormGroup;
 
   constructor(private builder: FormBuilder, private contact: ContactService) { }
 
   ngOnInit() {
-    this.formData = this.builder.group({
+    this.contactForm = this.builder.group({
       Fullname: new FormControl('', [Validators.required]),
       Email: new FormControl('', [Validators.required]),
       Comment: new FormControl('', [Validators.required])
@@ -23,6 +23,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit(formData:any) {
+    console.log("+++ CONTACTO: Método de submit");
     console.log(FormData)
     this.contact.PostMessage(formData)
       .subscribe(response => {

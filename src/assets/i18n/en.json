@@ -1,20 +1,21 @@
 {
   "BUTTONS": {
     "ALTA": "Alta",
-    "ELIMINAR": "Eliminar",
-    "ELIMINAR_TODOS": "Eliminar todos",
-    "CANCELAR": "Cancelar",
-    "ACEPTAR": "Aceptar",
-    "VER_DETALLES": "Ver detalles",
-    "BUSCAR": "Buscar",
-    "EDITAR": "Editar",
-    "MODIFICAR": "Modificar",
-    "PUBLICAR": "Publicar",
-    "ACTIVAR": "Activar",
+    "ELIMINAR": "Delete",
+    "ELIMINAR_TODOS": "Delete all",
+    "CANCELAR": "Cancel",
+    "ACEPTAR": "Acept",
+    "VER_DETALLES": "See details",
+    "BUSCAR": "Find",
+    "EDITAR": "Edit",
+    "MODIFICAR": "Update",
+    "PUBLICAR": "Publish",
+    "ACTIVAR": "Active",
     "DESACTIVAR": "Desactivar",
     "RESCINDIR": "Rescindir",
     "GUARDAR": "Guardar",
-    "GUARDAR_OTRO": "Guardar otro"
+    "GUARDAR_OTRO": "Guardar otro",
+    "ENVIAR": "Submit"
   },
   "LINKS": {
     "EXAMENES": "Tests",
@@ -65,5 +66,10 @@
   "IDIOMA": {
     "ESPANOL": "Spanish",
     "INGLES": "English"
+  },
+  "CONTACTO": {
+    "HEADER_CONTACTO": "Contact",
+    "COMENTARIO": "Comment",
+    "COMPARTIR_MAIL": "We'll never share your email with anyone else"
   }
 }

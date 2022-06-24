@@ -1,36 +1,36 @@
 <div class="wrapper-box">
   <div class="container">
-    <h2 class="text-center mb-5">Angular Contact Form Hosted On FireBase</h2>
+    <h2 class="text-center mb-5">{{ 'CONTACTO.HEADER_CONTACTO' | translate }}</h2>
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <form (ngSubmit)="onSubmit(formData.value)">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
           <div class="form-group">
-            <label for="Email">Email</label>
+            <label for="Email">{{ 'USUARIOS.EMAIL' | translate }}</label>
             <input
               type="email"
               class="form-control"
               name="Email"
               aria-describedby="emailHelp"
-              placeholder="Enter email"
+              placeholder="{{ 'USUARIOS.EMAIL' | translate }}"
               formControlName="Email"
             />
             <small id="emailHelp" class="form-text text-muted"
-              >We'll never share your email with anyone else.</small
+              >{{ 'CONTACTO.COMPARTIR_MAIL' | translate }}</small
             >
           </div>
           <div class="form-group">
-            <label for="fullname">Full Name</label>
+            <label for="fullname">{{ 'USUARIOS.NOMBRE' | translate }}</label>
             <input
               type="text"
               class="form-control"
               name="Fullname"
-              placeholder="Full Name"
+              placeholder="{{ 'USUARIOS.NOMBRE' | translate }}"
               formControlName="Fullname"
             />
           </div>
 
           <div class="form-group">
-            <label for="comment">Comment</label>
+            <label for="comment">{{ 'CONTACTO.COMENTARIO' | translate }}</label>
             <textarea
               class="form-control"
               formControlName="Comment"
@@ -41,9 +41,9 @@
           <button
             type="submit"
             class="btn btn-primary"
-            [disabled]="!formData.valid"
+            [disabled]="!contactForm.valid"
           >
-            Submit
+          {{ 'BUTTONS.ENVIAR' | translate }}
           </button>
         </form>
       </div>

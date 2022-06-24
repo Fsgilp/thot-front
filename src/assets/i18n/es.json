@@ -14,7 +14,8 @@
     "DESACTIVAR": "Desactivar",
     "RESCINDIR": "Rescindir",
     "GUARDAR": "Guardar",
-    "GUARDAR_OTRO": "Guardar otro"
+    "GUARDAR_OTRO": "Guardar otro",
+    "ENVIAR": "Enviar"
   },
   "LINKS": {
     "EXAMENES": "Exámenes",
@@ -47,8 +48,8 @@
   "USUARIOS": {
     "LISTA": "Lista de usuarios",
     "USUARIO": "Usuario",
-    "BUSCAR_POR_EMAIL": "Buscar por email",
-    "EMAIL": "Email",
+    "BUSCAR_POR_EMAIL": "Buscar por correo electrónico",
+    "EMAIL": "Correo electrónico",
     "NOMBRE": "Nombre",
     "STATUS": "Estatus",
     "ACTIVO": "Activo",
@@ -65,5 +66,10 @@
   "IDIOMA": {
     "ESPANOL": "Español",
     "INGLES": "Inglés"
+  },
+  "CONTACTO": {
+    "HEADER_CONTACTO": "Contacto",
+    "COMENTARIO": "Comentario",
+    "COMPARTIR_MAIL": "Nunca compartiremos tu email sin tu permiso"
   }
 }
