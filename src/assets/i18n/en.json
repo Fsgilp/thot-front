@@ -25,7 +25,8 @@
     "LOGOUT": "Logout",
     "PROFILE": "Profile",
     "CONTACTO": "Contact",
-    "AÑADIR_USUARIO": "Signup"
+    "AÑADIR_USUARIO": "Signup",
+    "HACER_EXAMEN": "Do test"
   },
   "GENERICO": {
     "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?"

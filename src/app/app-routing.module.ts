@@ -7,6 +7,8 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { DoTestComponent } from './components/do-test/do-test.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
@@ -16,7 +18,8 @@ const routes: Routes = [
   { path: 'add', component: AddTutorialComponent },
   { path: 'users', component: UsersListComponent },
   { path: 'users/:id', component: UserDetailsComponent },
-  { path: 'user/add', component: AddUserComponent }
+  { path: 'user/add', component: AddUserComponent },
+  { path: 'dotest', component: DoTestComponent }
 ];
 
 @NgModule({

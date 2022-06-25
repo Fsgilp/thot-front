@@ -25,7 +25,8 @@
     "LOGOUT": "Salir",
     "PROFILE": "Perfil",
     "CONTACTO": "Contacto",
-    "AÑADIR_USUARIO": "Registro"
+    "AÑADIR_USUARIO": "Registro",
+    "HACER_EXAMEN": "Realizar examen"
   },
   "GENERICO": {
     "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?"
@@ -62,7 +63,7 @@
   },
   "TITULO": "Thot",
   "COPYRIGHT": "© 2022 Copyright: Ángel Muñoz - ",
-  "EMAIL": "info@angelmunoz.es",
+  "EMAIL": "fsgilp@gmail.com",
   "IDIOMA": {
     "ESPANOL": "Español",
     "INGLES": "Inglés"
