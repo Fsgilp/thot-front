@@ -15,6 +15,7 @@ export class DoTestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //Para que el método no esté vacio
   }
 
   number_ok: number=0;
@@ -22,11 +23,11 @@ export class DoTestComponent implements OnInit {
 
   form: FormGroup;
   Data: Array<any> = [
-    { id: 1, name: 'Pear', value: 'pear' },
-    { id: 2, name: 'Plum', value: 'plum' },
-    { id: 3, name: 'Kiwi', value: 'kiwi' },
-    { id: 4, name: 'Apple', value: 'apple' },
-    { id: 5, name: 'Lime', value: 'lime' },
+    { id: 1, name: 'Primera respuesta', value: 'Primera', ok: true },
+    { id: 2, name: 'Segunda respuesta', value: 'Segunda', ok: false },
+    { id: 3, name: 'Tercera respuesta', value: 'Tercera', ok: true },
+    { id: 4, name: 'Cuarta respuesta', value: 'Cuarta', ok: false },
+    { id: 5, name: 'Quinta respuesta', value: 'Quinta', ok: true },
   ];
 
   onCheckboxChange(e:any) {
@@ -46,6 +47,8 @@ export class DoTestComponent implements OnInit {
   }
 
   submitForm(){
+    const correcto: boolean = true;
+    correcto ?  this.number_ok++ :  this.number_ko++;
     console.log("Llego submit");
     console.log(this.form.value);
   }
