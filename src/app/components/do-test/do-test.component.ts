@@ -51,6 +51,9 @@ export class DoTestComponent implements OnInit {
     correcto ?  this.number_ok++ :  this.number_ko++;
     console.log("Llego submit");
     console.log(this.form.value);
+    this.form.value.checkArray.forEach((item: any) => {
+      console.log(item);
+    });
   }
 
   timeLeft: number = 70;
