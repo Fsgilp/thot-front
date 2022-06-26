@@ -1,6 +1,32 @@
-Hola caracola
-<button (click)='startTimer()'>Start Timer</button>
-<button (click)='pauseTimer()'>Pause</button>
+<div class="list row">
+  <div class="col-md-8">
+    <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+      <label for="question" class="font-weight-bold">Pregunta:</label>
+      <div *ngFor="let data of Data; let i=index">
+        <label>
+          <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+          {{data.name}}
+        </label>
+      </div>
+      <p class="error" *ngIf="this.form.controls['checkArray'].errors?.['required']">
+        <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
+      </p>
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">{{ 'BUTTONS.ENVIAR' | translate }}</button>
+    </form>
+</div>
 
-<p>{{timeLeft}} Seconds Left....</p>
-
+<div class="col-md-4">
+  <main>
+    <div class="circle">
+        <div id="stopwatch" class="stopwatch">{{display_time}}</div>
+        <div class="buttons">
+            <div class="stop" (click)="stop()"></div>
+            <div id="play-pause" class="paused" (click)="startTimer()"></div>
+        </div>
+    </div>
+  </main>
+  <main>
+    <div class="circle"><p style="color: lime;">OK:{{number_ok}}</p><p style="color: red;">KO:{{number_ko}}</p></div>
+  </main>
+</div>
+</div>

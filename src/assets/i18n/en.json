@@ -72,5 +72,8 @@
     "HEADER_CONTACTO": "Contact",
     "COMENTARIO": "Comment",
     "COMPARTIR_MAIL": "We'll never share your email with anyone else"
+  },
+  "EXAMEN": {
+    "MENSAJE": "Marca al menos una respuesta"
   }
 }
