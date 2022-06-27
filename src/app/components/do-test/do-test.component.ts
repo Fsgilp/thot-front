@@ -22,13 +22,13 @@ export class DoTestComponent implements OnInit {
   number_ko: number=0;
 
   form: FormGroup;
-  Data: Array<any> = [
-    { id: 1, name: 'Primera respuesta', value: 'Primera', ok: true },
+  Data: any = {question:'Pregunta formulada:', answers:[
+    { id: 1, name: 'Primera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuesta', value: 'Primera', ok: true },
     { id: 2, name: 'Segunda respuesta', value: 'Segunda', ok: false },
     { id: 3, name: 'Tercera respuesta', value: 'Tercera', ok: true },
     { id: 4, name: 'Cuarta respuesta', value: 'Cuarta', ok: false },
     { id: 5, name: 'Quinta respuesta', value: 'Quinta', ok: true },
-  ];
+  ]};
 
   onCheckboxChange(e:any) {
     const checkArray: FormArray = this.form.get('checkArray') as FormArray;
@@ -47,13 +47,27 @@ export class DoTestComponent implements OnInit {
   }
 
   submitForm(){
-    const correcto: boolean = true;
-    correcto ?  this.number_ok++ :  this.number_ko++;
-    console.log("Llego submit");
-    console.log(this.form.value);
-    this.form.value.checkArray.forEach((item: any) => {
-      console.log(item);
+    let correcto: boolean = true;
+    let segunda_validacion: boolean = true;
+    let count: number = 0;
+
+    this.Data.answers.filter((d:any) => {
+      this.form.value.checkArray.filter((s:string) => {
+            if (d.value === s && !d.ok) {
+                correcto = false;
+                segunda_validacion = false;
+                return;
+            }
+        })
     });
+
+    this.Data.answers.forEach((item: any) => {
+      if(item.ok){
+        count++;
+      }
+    });
+    correcto = segunda_validacion && this.form.value.checkArray.length == count ? true: false;
+    correcto ?  this.number_ok++ :  this.number_ko++;
   }
 
   timeLeft: number = 70;

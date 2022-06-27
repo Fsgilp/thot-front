@@ -15,7 +15,8 @@
     "RESCINDIR": "Rescindir",
     "GUARDAR": "Guardar",
     "GUARDAR_OTRO": "Guardar otro",
-    "ENVIAR": "Submit"
+    "ENVIAR": "Submit",
+    "SALTAR_PREGUNTA": "Skip question"
   },
   "LINKS": {
     "EXAMENES": "Tests",

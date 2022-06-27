@@ -1,9 +1,9 @@
 <div class="list row">
   <div class="col-md-8">
     <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
-      <label for="question" class="font-weight-bold">Pregunta:</label>
-      <div *ngFor="let data of Data; let i=index">
-        <label>
+      <label for="question" class="font-weight-bold question" >{{Data.question}}</label>
+      <div *ngFor="let data of Data.answers; let i=index" >
+        <label class="option">
           <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
           {{data.name}}
         </label>
@@ -11,7 +11,8 @@
       <p class="error" *ngIf="this.form.controls['checkArray'].errors?.['required']">
         <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
       </p>
-      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">{{ 'BUTTONS.ENVIAR' | translate }}</button>
+      <button class="btn font-weight-bold question" type="submit" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
+      <button class="btn font-weight-bold" type="button" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
     </form>
 </div>
 
