@@ -1,12 +1,15 @@
 {
-  "name": "angular13-crud",
-  "version": "0.0.0",
+  "name": "thot-angular",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "docs:json": "compodoc -p tsconfig.doc.json -e json -d .",
+    "docs:serve": "compodoc -p tsconfig.doc.json -s",
+    "docs:dev": "compodoc -p tsconfig.doc.json -sw"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +33,7 @@
     "@angular-devkit/build-angular": "~13.0.1",
     "@angular/cli": "~13.0.1",
     "@angular/compiler-cli": "~13.0.0",
+    "@compodoc/compodoc": "^1.1.19",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",
