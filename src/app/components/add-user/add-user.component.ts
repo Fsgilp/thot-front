@@ -16,10 +16,18 @@ export class AddUserComponent implements OnInit {
   };
   submitted = false;
 
+/**
+ * The constructor function is a special function that is called when a new instance of the class is
+ * created.
+ * @param {UserService} userService - UserService
+ */
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {}
 
+  /**
+   * The function takes the user's email and name from the form and sends it to the server
+   */
   saveUser(): void {
     const data = {
       email: this.user.email,
@@ -36,6 +44,10 @@ export class AddUserComponent implements OnInit {
       });
   }
 
+ /**
+  * This function sets the submitted property to false, and sets the user property to an object with
+  * three properties: email, name, and active.
+  */
   newUser(): void {
     this.submitted = false;
     this.user = {

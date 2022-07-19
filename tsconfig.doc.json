@@ -4,11 +4,6 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
-  "include": ["projects/**/*.ts", "projects/**/*ex.html"],
-  "exclude": [
-    "projects/test.ts",
-    "projects/**/*.spec.ts",
-    "projects/**/*.stories.ts",
-    "projects/app/file-to-exclude.ts"
-  ]
+  "include": [],
+  "exclude": []
 }

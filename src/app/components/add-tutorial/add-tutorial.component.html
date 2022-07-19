@@ -24,6 +24,45 @@
         />
       </div>
 
+      <div class="form-group">
+        <label for="description">{{ 'EXAMENES.CRONO' | translate }}</label>
+        <input
+          class="form-control"
+          type="number"
+          id="crono"
+          required
+          [(ngModel)]="tutorial.crono"
+          name="crono"
+        />
+      </div>
+
+      <b>{{ 'EXAMENES.KEYS' | translate }}:{{keys | json}}</b>
+
+      <div class="form-group">
+        <label for="description">{{ 'EXAMENES.KEY' | translate }}</label>
+        <input
+          class="form-control"
+          id="key"
+          required
+          [(ngModel)]="key"
+          name="key"
+        />
+        <button class="btn btn-primary" (click)="addOption()" >{{ 'EXAMENES.ADD_KEY' | translate }}</button>
+        <button class="btn btn-danger" (click)="removeOption()" >{{ 'EXAMENES.REMOVE_KEY' | translate }}</button>
+      </div>
+
+      <div class="form-group">
+        <label for="description">{{ 'EXAMENES.ATTEMPS' | translate }}</label>
+        <input
+          class="form-control"
+          type="number"
+          id="attemps"
+          required
+          [(ngModel)]="tutorial.attemps"
+          name="attemps"
+        />
+      </div>
+
       <button (click)="saveTutorial()" class="btn btn-success">{{ 'BUTTONS.GUARDAR' | translate }}</button>
     </div>
 
