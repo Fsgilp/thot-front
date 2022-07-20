@@ -39,4 +39,12 @@ export class TutorialService {
   findByTitle(title: any): Observable<Tutorial[]> {
     return this.http.get<Tutorial[]>(`${baseUrl}?title=${title}`);
   }
+
+  findByKey(key: any): Observable<Tutorial[]> {
+    return this.http.get<Tutorial[]>(`${baseUrl}?key=${key}`);
+  }
+
+  findByAuthor(author: any): Observable<Tutorial[]> {
+    return this.http.get<Tutorial[]>(`${baseUrl}?author=${author}`);
+  }
 }

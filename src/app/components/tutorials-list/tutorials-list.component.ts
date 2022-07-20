@@ -14,6 +14,8 @@ export class TutorialsListComponent implements OnInit {
   currentTutorial: Tutorial = {};
   currentIndex = -1;
   title = '';
+  key = '';
+  author = '';
 
   constructor(private tutorialService: TutorialService,
     private translateService: TranslateService) { }
@@ -68,6 +70,39 @@ export class TutorialsListComponent implements OnInit {
         next: (data) => {
           this.tutorials = data;
           console.log(data);
+          this.title = "";
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchKey(): void {
+    this.currentTutorial = {};
+    this.currentIndex = -1;
+
+    this.tutorialService.findByKey(this.key)
+      .subscribe({
+        next: (data) => {
+          this.tutorials = data;
+          console.log(data);
+          this.key = "";
+
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchAuthor(): void {
+    this.currentTutorial = {};
+    this.currentIndex = -1;
+
+    this.tutorialService.findByAuthor(this.author)
+      .subscribe({
+        next: (data) => {
+          this.tutorials = data;
+          console.log(data);
+          this.author = "";
+
         },
         error: (e) => console.error(e)
       });

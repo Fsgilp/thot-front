@@ -36,6 +36,8 @@
     "LISTA": "Lista de exámenes",
     "EXAMEN": "Examen",
     "BUSCAR_POR_TITULO": "Buscar por título",
+    "BUSCAR_POR_CLAVE": "Buscar por etiqueta",
+    "BUSCAR_POR_AUTOR": "Buscar por autor",
     "TITULO": "Título",
     "DESCRIPCION": "Descripción",
     "CRONO": "Tiempo de examen (minutos)",
