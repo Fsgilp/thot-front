@@ -87,6 +87,38 @@
       <button (click)="anadirPregunta()">
         {{ 'BUTTONS.AGREGAR_PREGUNTA' | translate }}
       </button>-->
+      <h2>PREGUNTAS</h2>
+      <hr>
+
+      <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Código </th>
+          <td mat-cell *matCellDef="let articulo"> {{articulo.codigo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripción </th>
+          <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="borrar">
+          <th mat-header-cell *matHeaderCellDef> Borra? </th>
+          <td mat-cell *matCellDef="let j = index;">
+            <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+              Borra?
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+      </table>
       <hr>
 
       <button (click)="saveTutorial()" class="btn btn-success">{{ 'BUTTONS.GUARDAR' | translate }}</button>
