@@ -58,7 +58,9 @@
   "USUARIOS": {
     "LISTA": "Lista de usuarios",
     "USUARIO": "Usuario",
+    "BUSCAR_POR_EMPRESA": "Buscar por nombre de empresa",
     "BUSCAR_POR_EMAIL": "Buscar por correo electrónico",
+    "BUSCAR_POR_ROL": "Buscar por rol",
     "EMAIL": "Correo electrónico",
     "NOMBRE": "Nombre",
     "STATUS": "Estatus",

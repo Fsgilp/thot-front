@@ -14,6 +14,8 @@ export class UsersListComponent implements OnInit {
   currentUser: User = {};
   currentIndex = -1;
   email = '';
+  rol = '';
+  company_name = '';
 
   constructor(private userService: UserService,
     private translateService: TranslateService) { }
@@ -68,6 +70,37 @@ export class UsersListComponent implements OnInit {
         next: (data) => {
           this.users = data;
           console.log(data);
+          this.email = "";
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchCompany(): void {
+    this.currentUser = {};
+    this.currentIndex = -1;
+
+    this.userService.findByCompany(this.company_name)
+      .subscribe({
+        next: (data) => {
+          this.users = data;
+          console.log(data);
+          this.company_name = "";
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchRol(): void {
+    this.currentUser = {};
+    this.currentIndex = -1;
+
+    this.userService.findByRole(this.rol)
+      .subscribe({
+        next: (data) => {
+          this.users = data;
+          console.log(data);
+          this.rol = "";
         },
         error: (e) => console.error(e)
       });
