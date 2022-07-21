@@ -12,6 +12,10 @@ export class AddUserComponent implements OnInit {
   user: User = {
     email: '',
     name: '',
+    surname: '',
+    password: '',
+    company: {},
+    roles: [],
     active: false
   };
   submitted = false;
@@ -31,7 +35,11 @@ export class AddUserComponent implements OnInit {
   saveUser(): void {
     const data = {
       email: this.user.email,
-      name: this.user.name
+      name: this.user.name,
+      surname: this.user.surname,
+      password: this.user.password,
+      company: this.user.company,
+      roles: ["usuario"]
     };
 
     this.userService.create(data)
@@ -53,6 +61,10 @@ export class AddUserComponent implements OnInit {
     this.user = {
       email: '',
       name: '',
+      surname: '',
+      password: '',
+      company: {},
+      roles: [],
       active: false
     };
   }

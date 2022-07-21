@@ -24,6 +24,49 @@
         />
       </div>
 
+      <div class="form-group">
+        <label for="surname">{{ 'USUARIOS.APELLIDOS' | translate }}</label>
+        <input
+          class="form-control"
+          id="surname"
+          required
+          [(ngModel)]="user.surname"
+          name="surname"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">{{ 'USUARIOS.PASSWORD' | translate }}</label>
+        <input
+          class="form-control"
+          id="password"
+          type="password"
+          required
+          [(ngModel)]="user.password"
+          name="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cif">{{ 'USUARIOS.COMPANY.CIF' | translate }}</label>
+        <input
+          class="form-control"
+          id="cif"
+          [(ngModel)]="user.company.cif"
+          name="cif"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="company_name">{{ 'USUARIOS.COMPANY.NAME' | translate }}</label>
+        <input
+          class="form-control"
+          id="company_name"
+          [(ngModel)]="user.company.name"
+          name="company_name"
+        />
+      </div>
+
       <button (click)="saveUser()" class="btn btn-success">{{ 'BUTTONS.GUARDAR' | translate }}</button>
     </div>
 

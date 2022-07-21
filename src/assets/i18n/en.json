@@ -63,6 +63,12 @@
     "BUSCAR_POR_ROL": "Buscar por rol",
     "EMAIL": "Email",
     "NOMBRE": "Nombre",
+    "APELLIDOS": "Apellidos",
+    "PASSWORD": "Contraseña",
+    "COMPANY" : {
+      "CIF": "CIF",
+      "NAME": "Nombre de la empresa"
+    },
     "STATUS": "Estatus",
     "ACTIVO": "Activo",
     "INACTIVO": "Desactivado",
