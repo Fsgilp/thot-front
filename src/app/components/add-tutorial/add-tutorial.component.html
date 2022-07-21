@@ -62,6 +62,32 @@
           name="attemps"
         />
       </div>
+      <!--<form [formGroup]="formulario">
+        <h3>
+          PREGUNTA
+        </h3>
+        <div formArrayName="questions">
+          <div *ngFor="let question of questions.controls">
+            <div>
+              <label>Pregunta:</label><br />
+              <input type="text" />
+            </div>
+            <div>
+              <label>A.- Respuesta:</label><br />
+              <input type="text" />
+            </div>
+            <div>
+              <label>B.- Respuesta:</label><br />
+              <input type="text" />
+            </div>
+            <hr />
+          </div>
+        </div>
+      </form>
+      <button (click)="anadirPregunta()">
+        {{ 'BUTTONS.AGREGAR_PREGUNTA' | translate }}
+      </button>-->
+      <hr>
 
       <button (click)="saveTutorial()" class="btn btn-success">{{ 'BUTTONS.GUARDAR' | translate }}</button>
     </div>

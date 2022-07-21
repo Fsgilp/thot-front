@@ -1,6 +1,7 @@
 /* The AddTutorialComponent class is a component class that contains the logic for the
 add-tutorial.component.html template */
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
@@ -15,6 +16,8 @@ export class AddTutorialComponent implements OnInit {
 
   keys:any=[];
   key:string="";
+  //formulario!: FormGroup;
+
 
  /* Creating a new tutorial object. */
   tutorial: Tutorial = {
@@ -36,7 +39,7 @@ export class AddTutorialComponent implements OnInit {
  * instantiated and ensures proper initialization of fields in the class and its subclasses.
  * @param {TutorialService} tutorialService - TutorialService
  */
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private tutorialService: TutorialService, private fb: FormBuilder) { }
 
 /**
  * It's a function that takes a string and returns a string.
@@ -44,6 +47,26 @@ export class AddTutorialComponent implements OnInit {
   ngOnInit(): void {
     // Bloque para eliminar error de SonarLint
   }
+
+  /*crearFormulario() {
+    this.formulario = this.fb.group({
+      questions: this.fb.array([])
+    });
+  }
+
+  anadirQuestion() {
+    const question = this.fb.group({
+      name: new FormControl(''),
+      answer1: new FormControl(''),
+      answer2: new FormControl('')
+    });
+
+    this.questions.push(question);
+  }
+
+  get questions(): FormArray {
+    return this.formulario.get('questions') as FormArray;
+  }*/
 
   addOption(){
     this.keys.push(this.key); // push your actutal string value
@@ -59,7 +82,6 @@ export class AddTutorialComponent implements OnInit {
      this.key="";
 
   }
-
 
   /**
    * The function is called when the user clicks the submit button. It takes the data from the form and

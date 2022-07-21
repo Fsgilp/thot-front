@@ -17,7 +17,10 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { DoTestComponent } from './components/do-test/do-test.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,6 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -47,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
     }),
+    BrowserAnimationsModule,
   ],
   providers: [TranslateService],
   bootstrap: [AppComponent]

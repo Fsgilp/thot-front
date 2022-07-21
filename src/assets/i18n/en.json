@@ -16,7 +16,9 @@
     "GUARDAR": "Guardar",
     "GUARDAR_OTRO": "Guardar otro",
     "ENVIAR": "Submit",
-    "SALTAR_PREGUNTA": "Skip question"
+    "SALTAR_PREGUNTA": "Skip question",
+    "AGREGAR_PREGUNTA": "Add question"
+
   },
   "LINKS": {
     "EXAMENES": "Tests",
@@ -65,6 +67,8 @@
     "NOMBRE": "Nombre",
     "APELLIDOS": "Apellidos",
     "PASSWORD": "Contraseña",
+    "CONFIRMA_PASSWORD": "Confirme password",
+    "PASSWORD_NO_COINCIDE": "Los passwords no coinciden",
     "COMPANY" : {
       "CIF": "CIF",
       "NAME": "Nombre de la empresa"

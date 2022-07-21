@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -8,6 +9,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
+
+  confirma_password="";
+  message = '';
 
   user: User = {
     email: '',
@@ -25,7 +29,7 @@ export class AddUserComponent implements OnInit {
  * created.
  * @param {UserService} userService - UserService
  */
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private translateService: TranslateService) { }
 
   ngOnInit(): void {}
 
@@ -42,7 +46,8 @@ export class AddUserComponent implements OnInit {
       roles: ["usuario"]
     };
 
-    this.userService.create(data)
+    if(this.confirma_password==this.user.password){
+      this.userService.create(data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -50,6 +55,13 @@ export class AddUserComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+    }
+    else{
+      this.message = this.translateService.instant(
+        'USUARIOS.PASSWORD_NO_COINCIDE'
+      );
+    }
+
   }
 
  /**

@@ -42,8 +42,22 @@
           id="password"
           type="password"
           required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
           [(ngModel)]="user.password"
           name="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirma_password">{{ 'USUARIOS.CONFIRMA_PASSWORD' | translate }}</label>
+        <input
+          class="form-control"
+          id="confirma_password"
+          type="password"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+          [(ngModel)]="confirma_password"
+          name="confirma_password"
         />
       </div>
 
@@ -69,7 +83,7 @@
 
       <button (click)="saveUser()" class="btn btn-success">{{ 'BUTTONS.GUARDAR' | translate }}</button>
     </div>
-
+    <p>{{ message }}</p>
     <div *ngIf="submitted">
       <h4>{{ 'USUARIOS.MENSAJE_ACTIVAR' | translate }}</h4>
       <button class="btn btn-success" (click)="newUser()">{{ 'BUTTONS.GUARDAR_OTRO' | translate }}</button>
