@@ -25,93 +25,72 @@
       </div>
 
       <div class="form-group">
-        <label for="description">{{ 'EXAMENES.CRONO' | translate }}</label>
-        <input
-          class="form-control"
-          type="number"
-          id="crono"
-          required
-          [(ngModel)]="tutorial.crono"
-          name="crono"
-        />
-      </div>
-
-      <b>{{ 'EXAMENES.KEYS' | translate }}:{{keys | json}}</b>
-
-      <div class="form-group">
-        <label for="description">{{ 'EXAMENES.KEY' | translate }}</label>
-        <input
-          class="form-control"
-          id="key"
-          required
-          [(ngModel)]="key"
-          name="key"
-        />
-        <button class="btn btn-primary" (click)="addOption()" >{{ 'EXAMENES.ADD_KEY' | translate }}</button>
-        <button class="btn btn-danger" (click)="removeOption()" >{{ 'EXAMENES.REMOVE_KEY' | translate }}</button>
-      </div>
-
-      <div class="form-group">
-        <label for="description">{{ 'EXAMENES.ATTEMPS' | translate }}</label>
-        <input
-          class="form-control"
-          type="number"
-          id="attemps"
-          required
-          [(ngModel)]="tutorial.attemps"
-          name="attemps"
-        />
-      </div>
-      <!--<form [formGroup]="formulario">
-        <h3>
-          PREGUNTA
-        </h3>
-        <div formArrayName="questions">
-          <div *ngFor="let question of questions.controls">
-            <div>
-              <label>Pregunta:</label><br />
-              <input type="text" />
+        <div class="col-xs-12">
+            <div class="form-inline">
+                <div class="form-group">
+                  <label for="description" class="margencito">{{ 'EXAMENES.CRONO' | translate }}: </label>
+                  <input
+                    class="form-control margencito"
+                    type="number"
+                    id="crono"
+                    required
+                    [(ngModel)]="tutorial.crono"
+                    name="crono"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="description" class="margencito">{{ 'EXAMENES.ATTEMPS' | translate }}: </label>
+                  <input
+                    class="form-control margencito"
+                    type="number"
+                    id="attemps"
+                    required
+                    [(ngModel)]="tutorial.attemps"
+                    name="attemps"
+                  />
+                </div>
             </div>
-            <div>
-              <label>A.- Respuesta:</label><br />
-              <input type="text" />
-            </div>
-            <div>
-              <label>B.- Respuesta:</label><br />
-              <input type="text" />
-            </div>
-            <hr />
-          </div>
         </div>
-      </form>
-      <button (click)="anadirPregunta()">
-        {{ 'BUTTONS.AGREGAR_PREGUNTA' | translate }}
-      </button>-->
-      <h2>PREGUNTAS</h2>
-      <hr>
+    </div>
 
+      <div class="form-group">
+        <div>
+            <div class="form-inline">
+              <label for="key" class="col-xs-2 control-label margencito">{{ 'EXAMENES.KEY' | translate }}:</label>
+                <div class="form-group">
+                  <input
+                  class="form-control"
+                  id="key"
+                  required
+                  [(ngModel)]="key"
+                  name="key"
+                />
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" (click)="addOption()" >{{ 'EXAMENES.ADD_KEY' | translate }}</button>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-danger" (click)="removeOption()" >{{ 'EXAMENES.REMOVE_KEY' | translate }}</button>
+                </div>
+                <b>{{ 'EXAMENES.KEYS' | translate }}:{{keys | json}}</b>
+            </div>
+        </div>
+    </div>
+
+      <hr>
+      <h2>{{ 'PREGUNTAS.PREGUNTAS_ACTUALES' | translate }}</h2>
       <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
 
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef> Código </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.codigo}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="descripcion">
-          <th mat-header-cell *matHeaderCellDef> Descripción </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.descripcion}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="precio">
-          <th mat-header-cell *matHeaderCellDef> Precio </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.precio}} </td>
+        <ng-container matColumnDef="pregunta">
+          <th mat-header-cell *matHeaderCellDef> {{ 'PREGUNTAS.PREGUNTA' | translate }} </th>
+          <td mat-cell *matCellDef="let articulo"> {{articulo.pregunta}} </td>
         </ng-container>
 
         <ng-container matColumnDef="borrar">
-          <th mat-header-cell *matHeaderCellDef> Borra? </th>
+          <th mat-header-cell *matHeaderCellDef> {{ 'BUTTONS.ELIMINAR' | translate }} </th>
           <td mat-cell *matCellDef="let j = index;">
             <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
-              Borra?
+              {{ 'BUTTONS.ELIMINAR' | translate }}
             </button>
           </td>
         </ng-container>
@@ -119,6 +98,56 @@
         <tr mat-header-row *matHeaderRowDef="columnas"></tr>
         <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
       </table>
+      <hr>
+      <div style="background-color: #EDA00F; border-radius: 3px;">
+      <div class="form-group">
+        <label for="pregunta" class="otro_margencito">{{ 'PREGUNTAS.PREGUNTA' | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pregunta"
+          required
+          [(ngModel)]="pregunta"
+          name="pregunta"
+        />
+      </div>
+      <div class="form-group">
+        <label for="respuesta" class="otro_margencito">{{ 'PREGUNTAS.RESPUESTA' | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="respuesta"
+          required
+          [(ngModel)]="respuesta"
+          name="respuesta"
+        />
+      </div>
+
+      <h2>{{ 'PREGUNTAS.RESPUESTAS' | translate }}</h2>
+      <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
+
+        <ng-container matColumnDef="respuesta">
+          <th mat-header-cell *matHeaderCellDef> {{ 'PREGUNTAS.RESPUESTA' | translate }} </th>
+          <td mat-cell *matCellDef="let articulo"> {{articulo.pregunta}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="borrar">
+          <th mat-header-cell *matHeaderCellDef> {{ 'BUTTONS.ELIMINAR' | translate }} </th>
+          <td mat-cell *matCellDef="let j = index;">
+            <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+              {{ 'BUTTONS.ELIMINAR' | translate }}
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
+      </table>
+      <div class="form-group">
+        <button class="btn btn-secondary margencito" (click)="agregar()" >{{ 'BUTTONS.AGREGAR_RESPUESTA' | translate }}</button>
+        <button class="btn btn-primary" (click)="agregar()" >{{ 'BUTTONS.AGREGAR_PREGUNTA' | translate }}</button>
+      </div>
+    </div>
       <hr>
 
       <button (click)="saveTutorial()" class="btn btn-success">{{ 'BUTTONS.GUARDAR' | translate }}</button>

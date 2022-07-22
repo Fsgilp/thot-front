@@ -5,6 +5,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { MatTable } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 
 /* The AddTutorialComponent class is a component class
 that contains the logic for the add-tutorial.component.html template. */
@@ -17,6 +18,19 @@ export class AddTutorialComponent implements OnInit {
 
   keys:any=[];
   key:string="";
+  pregunta:string="";
+  respuesta:string="";
+
+  columnas2: string[] = ['respuesta', 'borrar'];
+  columnas: string[] = ['pregunta', 'borrar'];
+
+  datos: Articulo[] = [];
+  datos2: Articulo[] = [];
+
+  articuloselect: Articulo = new Articulo("");
+
+  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
+  @ViewChild(MatTable) tabla2!: MatTable<Articulo>;
 
  /* Creating a new tutorial object. */
   tutorial: Tutorial = {
@@ -38,7 +52,7 @@ export class AddTutorialComponent implements OnInit {
  * instantiated and ensures proper initialization of fields in the class and its subclasses.
  * @param {TutorialService} tutorialService - TutorialService
  */
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private tutorialService: TutorialService, private translateService: TranslateService) { }
 
 /**
  * It's a function that takes a string and returns a string.
@@ -105,34 +119,33 @@ export class AddTutorialComponent implements OnInit {
     };
   }
 
-  columnas: string[] = ['codigo', 'descripcion', 'precio', 'borrar'];
-  columnas2: string[] = ['ID', 'Pregunta', 'Respuesta', '¿Borrar?'];
-
-  datos: Articulo[] = [new Articulo(1, 'papas', 55),
-  new Articulo(2, 'manzanas', 53),
-  new Articulo(3, 'naranjas', 25),
-  ];
-
-  articuloselect: Articulo = new Articulo(0, "", 0);
-
-  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
-
   borrarFila(cod: number) {
-    if (confirm("Realmente quiere borrarlo?")) {
+    if (confirm(this.translateService.instant(
+      'PREGUNTAS.CONFIRMAR_BORRAR'
+    ))) {
       this.datos.splice(cod, 1);
       this.tabla1.renderRows();
     }
   }
 
+  borrarFila2(cod: number) {
+    if (confirm(this.translateService.instant(
+      'PREGUNTAS.CONFIRMAR_BORRAR'
+    ))) {
+      this.datos2.splice(cod, 1);
+      this.tabla2.renderRows();
+    }
+  }
+
   agregar() {
-    this.datos.push(new Articulo(this.articuloselect.codigo, this.articuloselect.descripcion, this.articuloselect.precio));
+    this.datos.push(new Articulo(this.articuloselect.pregunta));
     this.tabla1.renderRows();
-    this.articuloselect = new Articulo(0, "", 0);
+    this.articuloselect = new Articulo("");
   }
 }
 
 export class Articulo {
-  constructor(public codigo: number, public descripcion: string, public precio: number) {
+  constructor(public pregunta: string) {
   }
 }
 

@@ -1,5 +1,5 @@
 table {
-  width: 90%;
+  width: 100%;
   margin:1rem auto;
 }
 
@@ -7,12 +7,20 @@ table {
   display: flex;
   flex-direction: column;
   margin:1rem auto;
-  max-width: 600px;
+  /*max-width: 600px;*/
   box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
   padding: 1rem;
 }
 
 .submit-form {
-  max-width: 400px;
+  /*max-width: 400px;*/
   margin: auto;
+}
+
+.margencito {
+  margin-right: 5px;
+}
+
+.otro_margencito {
+  margin-left: 5px;
 }

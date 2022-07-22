@@ -17,7 +17,8 @@
     "GUARDAR_OTRO": "Guardar otro",
     "ENVIAR": "Submit",
     "SALTAR_PREGUNTA": "Skip question",
-    "AGREGAR_PREGUNTA": "Add question"
+    "AGREGAR_PREGUNTA": "Add question",
+    "AGREGAR_RESPUESTA": "Add answer"
 
   },
   "LINKS": {
@@ -44,9 +45,9 @@
     "DESCRIPCION": "Descripción",
     "CRONO": "Tiempo de examen (minutos)",
     "KEYS": "Palabras clave",
-    "KEY": "Clave",
-    "ADD_KEY": "Añadir clave",
-    "REMOVE_KEY": "Eliminar clave",
+    "KEY": "Etiqueta",
+    "ADD_KEY": "Añadir etiqueta",
+    "REMOVE_KEY": "Eliminar etiqueta",
     "ATTEMPS": "Intentos",
     "STATUS": "Estatus",
     "PUBLICADO": "Publicado",
@@ -81,6 +82,15 @@
     "MENSAJE_USUARIO": "El estatus del usuario ha sido actualizado con éxito",
     "MENSAJE_EDICION": "El usuario ha sido actualizado con éxito",
     "ERROR_ACCESO": "No se puede acceder al usuario requerido"
+  },
+  "PREGUNTAS":{
+    "CONFIRMAR_BORRAR": "¿Realmente quiere borrar la pregunta?",
+    "PREGUNTAS": "Preguntas",
+    "PREGUNTAS_ACTUALES": "Preguntas actuales",
+    "PREGUNTA": "Pregunta",
+    "NUMERO": "Identificador",
+    "RESPUESTAS": "Respuestas",
+    "RESPUESTA": "Respuesta"
   },
   "TITULO": "Thot",
   "COPYRIGHT": "© 2022 Copyright: Ángel Muñoz - ",
