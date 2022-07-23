@@ -84,13 +84,17 @@
     "ERROR_ACCESO": "No se puede acceder al usuario requerido"
   },
   "PREGUNTAS":{
-    "CONFIRMAR_BORRAR": "¿Realmente quiere borrar la pregunta?",
+    "CONFIRMAR_BORRAR": "¿Realmente quiere borrarla?",
+    "CONFIRMAR_AGREGAR": "¿Quiere agregar ya la pregunta? Todas las respuestas deben estar ya informadas",
     "PREGUNTAS": "Preguntas",
     "PREGUNTAS_ACTUALES": "Preguntas actuales",
     "PREGUNTA": "Pregunta",
+    "CORRECTA": "¿Correcta?",
     "NUMERO": "Identificador",
     "RESPUESTAS": "Respuestas",
-    "RESPUESTA": "Respuesta"
+    "RESPUESTA": "Respuesta",
+    "MENSAJE_AGREGAR_PREGUNTA": "Escriba la pregunta para el examen",
+    "MENSAJE_AGREGAR_RESPUESTA": "Escriba la respuesta para la pregunta del examen (marque en el check si es correcta)"
   },
   "TITULO": "Thot",
   "COPYRIGHT": "© 2022 Copyright: Ángel Muñoz - ",

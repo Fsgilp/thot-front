@@ -24,3 +24,11 @@ table {
 .otro_margencito {
   margin-left: 5px;
 }
+
+.margencito_inferior {
+  margin-bottom: 5px;
+}
+
+.margencito_total {
+  margin: 5px;
+}

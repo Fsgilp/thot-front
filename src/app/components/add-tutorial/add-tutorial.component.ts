@@ -1,7 +1,6 @@
 /* The AddTutorialComponent class is a component class that contains the logic for the
 add-tutorial.component.html template */
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { MatTable } from '@angular/material/table';
@@ -20,17 +19,17 @@ export class AddTutorialComponent implements OnInit {
   key:string="";
   pregunta:string="";
   respuesta:string="";
+  correcta:boolean=false;
 
-  columnas2: string[] = ['respuesta', 'borrar'];
+  columnas2: string[] = ['respuesta', 'correcta', 'borrar'];
   columnas: string[] = ['pregunta', 'borrar'];
 
-  datos: Articulo[] = [];
-  datos2: Articulo[] = [];
+  datos: Pregunta[] = [];
+  datos2: Respuesta[] = [new Respuesta(this.respuesta, this.correcta)];
 
-  articuloselect: Articulo = new Articulo("");
-
-  @ViewChild(MatTable) tabla1!: MatTable<Articulo>;
-  @ViewChild(MatTable) tabla2!: MatTable<Articulo>;
+  @ViewChildren(MatTable) tablas !: QueryList<any>;
+  @ViewChild('testTable1') preguntas!: MatTable<Pregunta>;
+  @ViewChild('testTable2') respuestas!: MatTable<Respuesta>;
 
  /* Creating a new tutorial object. */
   tutorial: Tutorial = {
@@ -124,7 +123,7 @@ export class AddTutorialComponent implements OnInit {
       'PREGUNTAS.CONFIRMAR_BORRAR'
     ))) {
       this.datos.splice(cod, 1);
-      this.tabla1.renderRows();
+      this.tablas.toArray().forEach(data => data.renderRows());
     }
   }
 
@@ -133,19 +132,38 @@ export class AddTutorialComponent implements OnInit {
       'PREGUNTAS.CONFIRMAR_BORRAR'
     ))) {
       this.datos2.splice(cod, 1);
-      this.tabla2.renderRows();
+      this.tablas.toArray().forEach(data => data.renderRows());
+
     }
   }
 
   agregar() {
-    this.datos.push(new Articulo(this.articuloselect.pregunta));
-    this.tabla1.renderRows();
-    this.articuloselect = new Articulo("");
+    if (confirm(this.translateService.instant(
+      'PREGUNTAS.CONFIRMAR_AGREGAR'
+    ))) {
+      this.datos.push(new Pregunta(this.pregunta));
+      this.tablas.toArray().forEach(data => data.renderRows());
+
+      this.pregunta="";
+    }
+  }
+
+  agregarRespuesta() {
+    this.datos2.push(new Respuesta(this.respuesta, this.correcta));
+    this.tablas.toArray().forEach(data => data.renderRows());
+
+    this.respuesta="";
+    this.correcta=false;
   }
 }
 
-export class Articulo {
+export class Pregunta {
   constructor(public pregunta: string) {
+  }
+}
+
+export class Respuesta {
+  constructor(public respuesta: string, public correcta: boolean) {
   }
 }
 

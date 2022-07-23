@@ -72,18 +72,18 @@
                 <div class="form-group">
                   <button class="btn btn-danger" (click)="removeOption()" >{{ 'EXAMENES.REMOVE_KEY' | translate }}</button>
                 </div>
-                <b>{{ 'EXAMENES.KEYS' | translate }}:{{keys | json}}</b>
+                <b class="otro_margencito">{{ 'EXAMENES.KEYS' | translate }}:{{keys | json}}</b>
             </div>
         </div>
     </div>
 
       <hr>
       <h2>{{ 'PREGUNTAS.PREGUNTAS_ACTUALES' | translate }}</h2>
-      <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
+      <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tablas>
 
         <ng-container matColumnDef="pregunta">
           <th mat-header-cell *matHeaderCellDef> {{ 'PREGUNTAS.PREGUNTA' | translate }} </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.pregunta}} </td>
+          <td mat-cell *matCellDef="let pregunta"> {{pregunta.pregunta}} </td>
         </ng-container>
 
         <ng-container matColumnDef="borrar">
@@ -99,42 +99,36 @@
         <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
       </table>
       <hr>
-      <div style="background-color: #EDA00F; border-radius: 3px;">
+      <div style="background-color: #dac49b; border-radius: 3px;">
+        <h4 class="otro_margencito">{{ 'PREGUNTAS.PREGUNTA' | translate }}</h4>
       <div class="form-group">
-        <label for="pregunta" class="otro_margencito">{{ 'PREGUNTAS.PREGUNTA' | translate }}</label>
         <input
           type="text"
           class="form-control"
           id="pregunta"
+          placeholder="{{ 'PREGUNTAS.MENSAJE_AGREGAR_PREGUNTA' | translate }}"
           required
           [(ngModel)]="pregunta"
           name="pregunta"
         />
       </div>
-      <div class="form-group">
-        <label for="respuesta" class="otro_margencito">{{ 'PREGUNTAS.RESPUESTA' | translate }}</label>
-        <input
-          type="text"
-          class="form-control"
-          id="respuesta"
-          required
-          [(ngModel)]="respuesta"
-          name="respuesta"
-        />
-      </div>
-
-      <h2>{{ 'PREGUNTAS.RESPUESTAS' | translate }}</h2>
-      <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tabla2>
+      <h4 class="otro_margencito">{{ 'PREGUNTAS.RESPUESTAS' | translate }}</h4>
+      <table mat-table [dataSource]="datos2" class="mat-elevation-z8" #tablas>
 
         <ng-container matColumnDef="respuesta">
           <th mat-header-cell *matHeaderCellDef> {{ 'PREGUNTAS.RESPUESTA' | translate }} </th>
-          <td mat-cell *matCellDef="let articulo"> {{articulo.pregunta}} </td>
+          <td mat-cell *matCellDef="let respuesta"> {{respuesta.respuesta}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="correcta">
+          <th mat-header-cell *matHeaderCellDef> {{ 'PREGUNTAS.CORRECTA' | translate }} </th>
+          <td mat-cell *matCellDef="let respuesta"> {{respuesta.correcta}} </td>
         </ng-container>
 
         <ng-container matColumnDef="borrar">
           <th mat-header-cell *matHeaderCellDef> {{ 'BUTTONS.ELIMINAR' | translate }} </th>
           <td mat-cell *matCellDef="let j = index;">
-            <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
+            <button mat-raised-button color="warn" focusable="false" (click)="borrarFila2(j)">
               {{ 'BUTTONS.ELIMINAR' | translate }}
             </button>
           </td>
@@ -144,8 +138,34 @@
         <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>
       </table>
       <div class="form-group">
-        <button class="btn btn-secondary margencito" (click)="agregar()" >{{ 'BUTTONS.AGREGAR_RESPUESTA' | translate }}</button>
-        <button class="btn btn-primary" (click)="agregar()" >{{ 'BUTTONS.AGREGAR_PREGUNTA' | translate }}</button>
+        <div class="form-inline">
+          <input
+            type="checkbox"
+            class="form-control margencito_total"
+            id="correcta"
+            [(ngModel)]="correcta"
+            name="correcta"
+          />
+          <input
+            type="text"
+            class="form-control"
+            style="width: 95%"
+            id="respuesta"
+            placeholder="{{ 'PREGUNTAS.MENSAJE_AGREGAR_RESPUESTA' | translate }}"
+            required
+            [(ngModel)]="respuesta"
+            name="respuesta"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-secondary margencito_total" (click)="agregarRespuesta()" >{{ 'BUTTONS.AGREGAR_RESPUESTA' | translate }}</button>
+      </div>
+
+      <hr>
+      <div class="form-group">
+        <button class="btn btn-primary margencito_total" (click)="agregar()" >{{ 'BUTTONS.AGREGAR_PREGUNTA' | translate }}</button>
       </div>
     </div>
       <hr>
