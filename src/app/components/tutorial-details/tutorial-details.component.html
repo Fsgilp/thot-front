@@ -9,6 +9,18 @@
       {{ currentTutorial.description }}
     </div>
     <div>
+      <label><strong>{{ 'EXAMENES.CRONO' | translate }}:</strong></label>
+      {{ currentTutorial.crono }}
+    </div>
+    <div>
+      <label><strong>{{ 'EXAMENES.ATTEMPS' | translate }}:</strong></label>
+      {{ currentTutorial.attemps }}
+    </div>
+    <!--<div>
+      <label><strong>{{ 'USUARIOS.USUARIO' | translate }}:</strong></label>
+      {{ currentTutorial.author.email }}
+    </div>-->
+    <div>
       <label><strong>{{ 'EXAMENES.STATUS' | translate }}:</strong></label>
       {{ (currentTutorial.published ? "EXAMENES.PUBLICADO" : "EXAMENES.PENDIENTE") | translate }}
     </div>
@@ -37,20 +49,77 @@
           type="text"
           class="form-control"
           id="title"
+          required
           [(ngModel)]="currentTutorial.title"
           name="title"
         />
       </div>
+
       <div class="form-group">
         <label for="description">{{ 'EXAMENES.DESCRIPCION' | translate }}</label>
         <input
-          type="text"
           class="form-control"
           id="description"
+          required
           [(ngModel)]="currentTutorial.description"
           name="description"
         />
       </div>
+
+      <div class="form-group">
+        <div class="col-xs-12">
+            <div class="form-inline">
+                <div class="form-group">
+                  <label for="description" class="margencito">{{ 'EXAMENES.CRONO' | translate }}: </label>
+                  <input
+                    class="form-control margencito"
+                    type="number"
+                    id="crono"
+                    required
+                    [(ngModel)]="currentTutorial.crono"
+                    name="crono"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="description" class="margencito">{{ 'EXAMENES.ATTEMPS' | translate }}: </label>
+                  <input
+                    class="form-control margencito"
+                    type="number"
+                    id="attemps"
+                    required
+                    [(ngModel)]="currentTutorial.attemps"
+                    name="attemps"
+                  />
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="form-group">
+        <div>
+            <div class="form-inline">
+              <label for="key" class="col-xs-2 control-label margencito">{{ 'EXAMENES.KEY' | translate }}:</label>
+                <div class="form-group">
+                  <input
+                  class="form-control"
+                  id="key"
+                  required
+                  [(ngModel)]="key"
+                  name="key"
+                />
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" (click)="addOption()" >{{ 'EXAMENES.ADD_KEY' | translate }}</button>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-danger" (click)="removeOption()" >{{ 'EXAMENES.REMOVE_KEY' | translate }}</button>
+                </div>
+                <b class="otro_margencito">{{ 'EXAMENES.KEYS_ELIMINAR' | translate }}:{{keys_eliminar | json}}</b>
+                <b class="otro_margencito">{{ 'EXAMENES.KEYS_PROPUESTAS' | translate }}:{{keys | json}}</b>
+                <b class="otro_margencito">{{ 'EXAMENES.KEYS_ACTUALES' | translate }}:{{currentTutorial.keys | json}}</b>
+            </div>
+        </div>
+    </div>
 
       <div class="form-group">
         <label><strong>{{ 'EXAMENES.STATUS' | translate }}:</strong></label>
@@ -59,7 +128,7 @@
     </form>
 
     <button
-      class="badge badge-primary mr-2"
+      class="btn btn-warning margencito_total"
       *ngIf="currentTutorial.published"
       (click)="updatePublished(false)"
     >
@@ -67,19 +136,19 @@
     </button>
     <button
       *ngIf="!currentTutorial.published"
-      class="badge badge-primary mr-2"
+      class="btn btn-info margencito_total"
       (click)="updatePublished(true)"
     >
     {{ 'BUTTONS.PUBLICAR' | translate }}
     </button>
 
-    <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+    <button class="btn btn-danger margencito_total" (click)="deleteTutorial()">
       {{ 'BUTTONS.ELIMINAR' | translate }}
     </button>
 
     <button
       type="submit"
-      class="badge badge-success mb-2"
+      class="btn btn-primary margencito_total"
       (click)="updateTutorial()"
     >
     {{ 'BUTTONS.MODIFICAR' | translate }}

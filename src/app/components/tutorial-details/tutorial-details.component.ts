@@ -11,11 +11,17 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TutorialDetailsComponent implements OnInit {
 
+  keys:any=[];
+  keys_eliminar:any=[];
+  key:string="";
   @Input() viewMode = false;
 
   @Input() currentTutorial: Tutorial = {
     title: '',
     description: '',
+    crono: 0,
+    attemps: 0,
+    author: {},
     published: false
   };
 
@@ -34,6 +40,22 @@ export class TutorialDetailsComponent implements OnInit {
     }
   }
 
+    addOption(){
+    this.keys.push(this.key); // push your actutal string value
+    this.key=""; //don't consider this, this is just for adding new name
+  }
+
+  removeOption(){
+    /*for (let i = 0; i < this.keys.length; i++) {
+      if (this.keys[i] === this.key){
+        this.keys.splice(i,1);
+      }
+     }*/
+     this.keys_eliminar.push(this.key); // push your actutal string value
+     this.key="";
+
+  }
+
   getTutorial(id: string): void {
     this.tutorialService.get(id)
       .subscribe({
@@ -49,6 +71,10 @@ export class TutorialDetailsComponent implements OnInit {
     const data = {
       title: this.currentTutorial.title,
       description: this.currentTutorial.description,
+      crono: this.currentTutorial.crono,
+      attemps: this.currentTutorial.attemps,
+      author: this.currentTutorial.author,
+      keys: this.currentTutorial.keys,
       published: status
     };
 
@@ -69,14 +95,21 @@ export class TutorialDetailsComponent implements OnInit {
 
   updateTutorial(): void {
     this.message = '';
+    console.log(this.currentTutorial.keys);
+    console.log(this.keys);
+    this.currentTutorial.keys!=this.currentTutorial.keys?.concat(this.keys);
+    console.log(this.currentTutorial.keys);
 
     this.tutorialService.update(this.currentTutorial.id, this.currentTutorial)
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.message = res.message ? res.message :  this.translateService.instant(
-            'EXAMENES.MENSAJE_EDICION'
-          );
+          let devolucion:string=res.message;
+          if(devolucion=="Tutorial was updated successfully."){
+            this.message = this.translateService.instant('EXAMENES.MENSAJE_EDICION');
+          }else{
+            this.message = devolucion;
+          }
         },
         error: (e) => console.error(e)
       });

@@ -20,12 +20,16 @@ export class AddTutorialComponent implements OnInit {
   pregunta:string="";
   respuesta:string="";
   correcta:boolean=false;
+  questions:any=[];
+  question:any={};
+  answers:any=[];
+  answer:any={};
 
   columnas2: string[] = ['respuesta', 'correcta', 'borrar'];
   columnas: string[] = ['pregunta', 'borrar'];
 
   datos: Pregunta[] = [];
-  datos2: Respuesta[] = [new Respuesta(this.respuesta, this.correcta)];
+  datos2: Respuesta[] = [];
 
   @ViewChildren(MatTable) tablas !: QueryList<any>;
   @ViewChild('testTable1') preguntas!: MatTable<Pregunta>;
@@ -81,12 +85,15 @@ export class AddTutorialComponent implements OnInit {
    * sends it to the server
    */
   saveTutorial(): void {
+
+
     const data = {
       title: this.tutorial.title,
       description: this.tutorial.description,
       crono: this.tutorial.crono,
       attemps: this.tutorial.attemps,
-      keys: this.keys
+      keys: this.keys,
+      questions: this.questions
     };
 
     this.tutorialService.create(data)
@@ -94,6 +101,10 @@ export class AddTutorialComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.submitted = true;
+          this.questions=[];
+          this.datos=[];
+          this.datos2=[];
+          this.tablas.toArray().forEach(data => data.renderRows());
         },
         error: (e) => console.error(e)
       });
@@ -122,6 +133,7 @@ export class AddTutorialComponent implements OnInit {
     if (confirm(this.translateService.instant(
       'PREGUNTAS.CONFIRMAR_BORRAR'
     ))) {
+      this.questions.splice(cod, 1);
       this.datos.splice(cod, 1);
       this.tablas.toArray().forEach(data => data.renderRows());
     }
@@ -131,6 +143,7 @@ export class AddTutorialComponent implements OnInit {
     if (confirm(this.translateService.instant(
       'PREGUNTAS.CONFIRMAR_BORRAR'
     ))) {
+      this.answers.splice(cod, 1);
       this.datos2.splice(cod, 1);
       this.tablas.toArray().forEach(data => data.renderRows());
 
@@ -142,8 +155,13 @@ export class AddTutorialComponent implements OnInit {
       'PREGUNTAS.CONFIRMAR_AGREGAR'
     ))) {
       this.datos.push(new Pregunta(this.pregunta));
+      this.datos2= [];
       this.tablas.toArray().forEach(data => data.renderRows());
-
+      this.questions.push({
+        "question": this.pregunta,
+        "answers": this.answers
+      });
+      this.answers=[];
       this.pregunta="";
     }
   }
@@ -151,7 +169,11 @@ export class AddTutorialComponent implements OnInit {
   agregarRespuesta() {
     this.datos2.push(new Respuesta(this.respuesta, this.correcta));
     this.tablas.toArray().forEach(data => data.renderRows());
-
+    this.answer={
+      "answer": this.respuesta,
+      "correct": this.correcta
+    };
+    this.answers.push(this.answer);
     this.respuesta="";
     this.correcta=false;
   }
