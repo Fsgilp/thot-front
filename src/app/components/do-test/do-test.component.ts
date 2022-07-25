@@ -13,6 +13,7 @@ export class DoTestComponent implements OnInit {
 
   currentTutorial: Tutorial={};
   totalPreguntas:number=0;
+  conteoPreguntas:number=1;
   pregunta: any = {};
 
   constructor(private formBuilder: FormBuilder,     private tutorialService: TutorialService,
@@ -52,6 +53,7 @@ export class DoTestComponent implements OnInit {
     let correcto: boolean = true;
     let segunda_validacion: boolean = true;
     let count: number = 0;
+    this.conteoPreguntas = this.conteoPreguntas+1;
 
     this.pregunta.answers.filter((d:any) => {
       console.log(d);

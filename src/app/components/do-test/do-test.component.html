@@ -1,4 +1,5 @@
 <h1>{{currentTutorial.title}}</h1>
+<h4>{{ 'PREGUNTAS.PREGUNTAS' | translate }}:{{conteoPreguntas}}/{{totalPreguntas}}</h4>
 <div class="list row ">
   <div class="col-md-8">
     <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
@@ -13,7 +14,7 @@
         <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
       </p>
       <button class="btn font-weight-bold question" type="submit" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
-      <button class="btn font-weight-bold" type="button" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
+      <!--<button class="btn font-weight-bold" disabled type="button" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>-->
     </form>
 </div>
 
@@ -21,10 +22,10 @@
   <main>
     <div class="circle">
         <div id="stopwatch" class="stopwatch">{{display_time}}</div>
-        <div class="buttons">
+        <!--<div class="buttons">
             <div class="stop" (click)="stop()"></div>
             <div id="play-pause" class="paused" (click)="startTimer()"></div>
-        </div>
+        </div>-->
     </div>
   </main>
   <main>
