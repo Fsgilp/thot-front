@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { TutorialService } from 'src/app/services/tutorial.service';
+import { Tutorial } from '../../models/tutorial.model';
 
 @Component({
   selector: 'app-do-test',
@@ -8,27 +11,26 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angu
 })
 export class DoTestComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) {
+  currentTutorial: Tutorial={};
+  totalPreguntas:number=0;
+  pregunta: any = {};
+
+  constructor(private formBuilder: FormBuilder,     private tutorialService: TutorialService,
+    private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
       checkArray: this.formBuilder.array([], [Validators.required]),
     });
+    this.getTutorial(this.route.snapshot.params["id"]);
   }
 
   ngOnInit(): void {
-    //Para que el método no esté vacio
+
   }
 
   number_ok: number=0;
   number_ko: number=0;
 
   form: FormGroup;
-  Data: any = {question:'Pregunta formulada:', answers:[
-    { id: 1, name: 'Primera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuestaPrimera respuesta', value: 'Primera', ok: true },
-    { id: 2, name: 'Segunda respuesta', value: 'Segunda', ok: false },
-    { id: 3, name: 'Tercera respuesta', value: 'Tercera', ok: true },
-    { id: 4, name: 'Cuarta respuesta', value: 'Cuarta', ok: false },
-    { id: 5, name: 'Quinta respuesta', value: 'Quinta', ok: true },
-  ]};
 
   onCheckboxChange(e:any) {
     const checkArray: FormArray = this.form.get('checkArray') as FormArray;
@@ -51,7 +53,7 @@ export class DoTestComponent implements OnInit {
     let segunda_validacion: boolean = true;
     let count: number = 0;
 
-    this.Data.answers.filter((d:any) => {
+    this.pregunta.answers.filter((d:any) => {
       this.form.value.checkArray.filter((s:string) => {
             if (d.value === s && !d.ok) {
                 correcto = false;
@@ -61,7 +63,7 @@ export class DoTestComponent implements OnInit {
         })
     });
 
-    this.Data.answers.forEach((item: any) => {
+    this.pregunta.answers.forEach((item: any) => {
       if(item.ok){
         count++;
       }
@@ -70,9 +72,24 @@ export class DoTestComponent implements OnInit {
     correcto ?  this.number_ok++ :  this.number_ko++;
   }
 
-  timeLeft: number = 70;
+  timeLeft: number = 0;
   interval: any;
   display_time: string ='00:00';
+
+  getTutorial(id: string): void {
+    this.tutorialService.get(id)
+      .subscribe({
+        next: (data) => {
+          this.currentTutorial = data;
+          console.log(data);
+          this.totalPreguntas = this.currentTutorial.questions? this.currentTutorial.questions.length:0;
+          this.pregunta = this.currentTutorial.questions?.find(element => element != undefined);
+          this.timeLeft = this.currentTutorial.crono? this.currentTutorial.crono:0;
+          this.startTimer();
+        },
+        error: (e) => console.error(e)
+      });
+  }
 
   startTimer() {
     if(!this.interval){
@@ -107,50 +124,5 @@ calculateTime(runningTime:number) {
 
   return display_minutes+":"+display_seconds;
 }
-
-  /*playPause() {
-    const isPaused = !this.playPauseButton.classList.contains('running');
-    if (isPaused) {
-        this.playPauseButton.classList.add('running');
-        this.start();
-    } else {
-        this.playPauseButton.classList.remove('running');
-        this.pause();
-    }
-}
-
-pause() {
-    this.secondsSphere.style.animationPlayState = 'paused';
-    clearInterval(this.stopwatchInterval);
-}
-
-stop() {
-    this.secondsSphere.style.transform = 'rotate(-90deg) translateX(60px)';
-    this.secondsSphere.style.animation = 'none';
-    this.playPauseButton.classList.remove('running');
-    this.runningTime = 0;
-    clearInterval(this.stopwatchInterval);
-    this.stopwatch.textContent = '00:00';
-}
-
-start() {
-    this.secondsSphere.style.animation = 'rotacion 60s linear infinite';
-    let startTime = Date.now() - this.runningTime;
-    this.secondsSphere.style.animationPlayState = 'running';
-    this.stopwatchInterval = setInterval( () => {
-        this.runningTime = Date.now() - startTime;
-        this.stopwatch.textContent = this.calculateTime(this.runningTime);
-    }, 1000)
-}
-
-calculateTime(runningTime:number) {
-    const total_seconds = Math.floor(runningTime / 1000);
-    const total_minutes = Math.floor(total_seconds / 60);
-
-    const display_seconds = (total_seconds % 60).toString().padStart(2, "0");
-    const display_minutes = total_minutes.toString().padStart(2, "0");
-
-    return `${display_minutes}:${display_seconds}`
-}*/
 
 }

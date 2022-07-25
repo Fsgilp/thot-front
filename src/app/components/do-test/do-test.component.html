@@ -1,11 +1,12 @@
+<h1>{{currentTutorial.title}}</h1>
 <div class="list row ">
   <div class="col-md-8">
     <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
-      <label for="question" class="font-weight-bold question" >{{Data.question}}</label>
-      <div *ngFor="let data of Data.answers; let i=index" >
+      <label for="question" class="font-weight-bold question" >{{pregunta.question}}</label>
+      <div *ngFor="let data of pregunta.answers; let i=index" >
         <label class="option">
           <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
-          {{data.name}}
+          {{data.answer}}
         </label>
       </div>
       <p class="error" *ngIf="this.form.controls['checkArray'].errors?.['required']">
