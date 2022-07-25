@@ -74,10 +74,18 @@
       {{ 'BUTTONS.ELIMINAR_TODOS' | translate }}
     </button>
   </div>
-  <div class="col-md-6">
+  <div *ngIf="!_admin" class="col-md-6">
     <app-tutorial-details
       [viewMode]="true"
       [currentTutorial]="currentTutorial"
+      [admin]="false"
+    ></app-tutorial-details>
+  </div>
+  <div *ngIf="_admin" class="col-md-6">
+    <app-tutorial-details
+      [viewMode]="true"
+      [currentTutorial]="currentTutorial"
+      [admin]="true"
     ></app-tutorial-details>
   </div>
 </div>

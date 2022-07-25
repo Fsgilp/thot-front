@@ -14,7 +14,7 @@
     </div>
 
     <a
-      class="badge badge-warning"
+      class="btn btn-warning margencito_total"
       routerLink="/users/{{ currentUser.id }}"
     >
     {{ 'BUTTONS.EDITAR' | translate }}
@@ -59,27 +59,29 @@
     </form>
 
     <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentUser.active"
+    class="btn btn-secondary margencito_total"
+    *ngIf="currentUser.active"
       (click)="updateActive(false)"
     >
     {{ 'BUTTONS.DESACTIVAR' | translate }}
     </button>
     <button
       *ngIf="!currentUser.active"
-      class="badge badge-primary mr-2"
+      class="btn btn-info margencito_total"
       (click)="updateActive(true)"
     >
     {{ 'BUTTONS.ACTIVAR' | translate }}
     </button>
 
-    <button class="badge badge-danger mr-2" (click)="deleteUser()">
+    <button
+    class="btn btn-danger margencito_total"
+    (click)="deleteUser()">
       {{ 'BUTTONS.ELIMINAR' | translate }}
     </button>
 
     <button
       type="submit"
-      class="badge badge-success mb-2"
+      class="btn btn-primary margencito_total"
       (click)="updateUser()"
     >
     {{ 'BUTTONS.MODIFICAR' | translate }}

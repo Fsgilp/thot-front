@@ -17,6 +17,7 @@ export class TutorialDetailsComponent implements OnInit {
   totalPreguntas:number=0;
 
   @Input() viewMode = false;
+  @Input() admin:boolean= false;
 
   @Input() currentTutorial: Tutorial = {
     title: '',

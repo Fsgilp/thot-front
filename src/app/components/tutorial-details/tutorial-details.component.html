@@ -27,10 +27,18 @@
     </div>
 
     <a
-      class="badge badge-warning"
+      class="btn btn-warning margencito_total"
       routerLink="/tutorials/{{ currentTutorial.id }}"
+      *ngIf="!admin"
     >
     {{ 'BUTTONS.EDITAR' | translate }}
+    </a>
+    <a
+      class="btn btn-info margencito_total"
+      routerLink="/tutorials/{{ currentTutorial.id }}"
+      *ngIf="admin"
+    >
+    {{ 'LINKS.HACER_EXAMEN' | translate }}
     </a>
   </div>
 

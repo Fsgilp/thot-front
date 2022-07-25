@@ -1,4 +1,6 @@
 .edit-form {
-  max-width: 400px;
   margin: auto;
+}
+.margencito_total {
+  margin: 5px;
 }
