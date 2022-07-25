@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TutorialsListComponent implements OnInit {
 
+  _admin = false;
   tutorials?: Tutorial[];
   currentTutorial: Tutorial = {};
   currentIndex = -1;
@@ -19,6 +20,12 @@ export class TutorialsListComponent implements OnInit {
 
   constructor(private tutorialService: TutorialService,
     private translateService: TranslateService) { }
+
+    @Input()
+  set admin(param:string) {   // this is setter for booleanCheck input.
+    this._admin = true;
+  }
+
 
   ngOnInit(): void {
     this.retrieveTutorials();

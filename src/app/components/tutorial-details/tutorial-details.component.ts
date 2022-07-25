@@ -14,6 +14,8 @@ export class TutorialDetailsComponent implements OnInit {
   keys:any=[];
   keys_eliminar:any=[];
   key:string="";
+  totalPreguntas:number=0;
+
   @Input() viewMode = false;
 
   @Input() currentTutorial: Tutorial = {
@@ -22,7 +24,8 @@ export class TutorialDetailsComponent implements OnInit {
     crono: 0,
     attemps: 0,
     author: {},
-    published: false
+    published: false,
+    questions: []
   };
 
   message = '';
@@ -62,6 +65,7 @@ export class TutorialDetailsComponent implements OnInit {
         next: (data) => {
           this.currentTutorial = data;
           console.log(data);
+          this.totalPreguntas= this.currentTutorial.questions? this.currentTutorial.questions.length:0;
         },
         error: (e) => console.error(e)
       });
@@ -75,6 +79,7 @@ export class TutorialDetailsComponent implements OnInit {
       attemps: this.currentTutorial.attemps,
       author: this.currentTutorial.author,
       keys: this.currentTutorial.keys,
+      questions: this.currentTutorial.questions,
       published: status
     };
 

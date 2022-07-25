@@ -16,6 +16,7 @@
       <label><strong>{{ 'EXAMENES.ATTEMPS' | translate }}:</strong></label>
       {{ currentTutorial.attemps }}
     </div>
+
     <!--<div>
       <label><strong>{{ 'USUARIOS.USUARIO' | translate }}:</strong></label>
       {{ currentTutorial.author.email }}
@@ -124,6 +125,11 @@
       <div class="form-group">
         <label><strong>{{ 'EXAMENES.STATUS' | translate }}:</strong></label>
         {{ (currentTutorial.published ? "EXAMENES.PUBLICADO" : "EXAMENES.PENDIENTE") | translate }}
+      </div>
+
+      <div class="form-group">
+        <label><strong>{{ 'PREGUNTAS.PREGUNTAS' | translate }}:</strong></label>
+        {{ totalPreguntas }}
       </div>
     </form>
 

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { AdministrationComponent } from './administration/administration.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserDetailsComponent,
     UsersListComponent,
     ContactFormComponent,
-    DoTestComponent
+    DoTestComponent,
+    AdministrationComponent
   ],
   imports: [
     BrowserModule,

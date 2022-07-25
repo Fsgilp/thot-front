@@ -8,10 +8,12 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { DoTestComponent } from './components/do-test/do-test.component';
+import { AdministrationComponent } from './administration/administration.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
+  { path: '', redirectTo: 'dotest', pathMatch: 'full' },
+  { path: 'administration', component: AdministrationComponent },
   { path: 'contact', component: ContactFormComponent },
   { path: 'tutorials', component: TutorialsListComponent },
   { path: 'tutorials/:id', component: TutorialDetailsComponent },

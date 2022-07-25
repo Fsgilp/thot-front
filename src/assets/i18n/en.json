@@ -23,6 +23,7 @@
   },
   "LINKS": {
     "EXAMENES": "Tests",
+    "ADMINISTRATION": "Administration",
     "AÑADIR_EXAMEN": "Add test",
     "USUARIOS": "Users",
     "LOGIN": "Login",
@@ -34,6 +35,11 @@
   },
   "GENERICO": {
     "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?"
+  },
+  "ADMINISTRATION":{
+    "ADMINISTRATION": "Administración",
+    "ADMINISTRAR_EXAMENES": "Administrar exámenes",
+    "ADMINISTRAR_USUARIOS": "Administrar usuarios"
   },
   "EXAMENES": {
     "LISTA": "Lista de exámenes",

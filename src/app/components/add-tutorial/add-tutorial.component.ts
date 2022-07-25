@@ -104,6 +104,7 @@ export class AddTutorialComponent implements OnInit {
           this.questions=[];
           this.datos=[];
           this.datos2=[];
+          this.keys=[];
           this.tablas.toArray().forEach(data => data.renderRows());
         },
         error: (e) => console.error(e)

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UsersListComponent implements OnInit {
 
+  _admin = false;
   users?: User[];
   currentUser: User = {};
   currentIndex = -1;
@@ -19,6 +20,11 @@ export class UsersListComponent implements OnInit {
 
   constructor(private userService: UserService,
     private translateService: TranslateService) { }
+
+    @Input()
+  set admin(param:string) {   // this is setter for booleanCheck input.
+    this._admin = true;
+  }
 
   ngOnInit(): void {
     this.retrieveUsers();
