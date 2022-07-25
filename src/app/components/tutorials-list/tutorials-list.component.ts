@@ -32,7 +32,8 @@ export class TutorialsListComponent implements OnInit {
   }
 
   retrieveTutorials(): void {
-    this.tutorialService.getAll()
+    if(!this._admin){
+      this.tutorialService.getAll()
       .subscribe({
         next: (data) => {
           this.tutorials = data;
@@ -40,6 +41,17 @@ export class TutorialsListComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+    }else{
+      this.tutorialService.getAllPublished()
+      .subscribe({
+        next: (data) => {
+          this.tutorials = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+    }
+
   }
 
   refreshList(): void {
@@ -75,7 +87,11 @@ export class TutorialsListComponent implements OnInit {
     this.tutorialService.findByTitle(this.title)
       .subscribe({
         next: (data) => {
-          this.tutorials = data;
+          if(!this._admin){
+            this.tutorials = data;
+          }else{
+            this.tutorials=data.filter(tutorial => tutorial.published);
+          }
           console.log(data);
           this.title = "";
         },
@@ -90,8 +106,11 @@ export class TutorialsListComponent implements OnInit {
     this.tutorialService.findByKey(this.key)
       .subscribe({
         next: (data) => {
-          this.tutorials = data;
-          console.log(data);
+          if(!this._admin){
+            this.tutorials = data;
+          }else{
+            this.tutorials=data.filter(tutorial => tutorial.published);
+          }
           this.key = "";
 
         },
@@ -106,8 +125,11 @@ export class TutorialsListComponent implements OnInit {
     this.tutorialService.findByAuthor(this.author)
       .subscribe({
         next: (data) => {
-          this.tutorials = data;
-          console.log(data);
+          if(!this._admin){
+            this.tutorials = data;
+          }else{
+            this.tutorials=data.filter(tutorial => tutorial.published);
+          }
           this.author = "";
 
         },

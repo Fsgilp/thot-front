@@ -41,6 +41,10 @@
     "ADMINISTRAR_EXAMENES": "Administrar exámenes",
     "ADMINISTRAR_USUARIOS": "Administrar usuarios"
   },
+  "IDIOMAS":{
+    "SPANISH": "Español",
+    "INGLÉS": "Inglés"
+  },
   "EXAMENES": {
     "LISTA": "Lista de exámenes",
     "EXAMEN": "Examen",
@@ -50,6 +54,7 @@
     "TITULO": "Título",
     "DESCRIPCION": "Descripción",
     "CRONO": "Tiempo de examen (minutos)",
+    "LANGUAGE": "Idioma",
     "KEYS": "Palabras clave",
     "KEYS_ACTUALES": "Etiquetas actuales",
     "KEYS_PROPUESTAS": "Etiquetas propuestas",

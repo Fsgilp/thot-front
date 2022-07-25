@@ -15,6 +15,8 @@ export class TutorialDetailsComponent implements OnInit {
   keys_eliminar:any=[];
   key:string="";
   totalPreguntas:number=0;
+  selectedLanguage:string="";
+  languages:any = ["Español | Spanish", "Inglés | English"];
 
   @Input() viewMode = false;
   @Input() admin:boolean= false;
@@ -42,6 +44,10 @@ export class TutorialDetailsComponent implements OnInit {
       this.message = '';
       this.getTutorial(this.route.snapshot.params["id"]);
     }
+  }
+
+  onChange(newValue:string) {
+    this.selectedLanguage = newValue;
   }
 
     addOption(){
@@ -81,6 +87,7 @@ export class TutorialDetailsComponent implements OnInit {
       author: this.currentTutorial.author,
       keys: this.currentTutorial.keys,
       questions: this.currentTutorial.questions,
+      language: this.currentTutorial.language,
       published: status
     };
 

@@ -24,6 +24,8 @@ export class AddTutorialComponent implements OnInit {
   question:any={};
   answers:any=[];
   answer:any={};
+  selectedLanguage:string="";
+  languages:any = ["Español | Spanish", "Inglés | English"];
 
   columnas2: string[] = ['respuesta', 'correcta', 'borrar'];
   columnas: string[] = ['pregunta', 'borrar'];
@@ -64,6 +66,9 @@ export class AddTutorialComponent implements OnInit {
     // Bloque para eliminar error de SonarLint
   }
 
+  onChange(newValue:string) {
+    this.selectedLanguage = newValue;
+  }
 
   addOption(){
     this.keys.push(this.key); // push your actutal string value
@@ -93,6 +98,7 @@ export class AddTutorialComponent implements OnInit {
       crono: this.tutorial.crono,
       attemps: this.tutorial.attemps,
       keys: this.keys,
+      language: this.selectedLanguage,
       questions: this.questions
     };
 
@@ -105,6 +111,7 @@ export class AddTutorialComponent implements OnInit {
           this.datos=[];
           this.datos2=[];
           this.keys=[];
+          this.selectedLanguage="";
           this.tablas.toArray().forEach(data => data.renderRows());
         },
         error: (e) => console.error(e)
@@ -126,6 +133,7 @@ export class AddTutorialComponent implements OnInit {
       attemps: 0,
       vote_ok: 0,
       vote_ko: 0,
+      language: "",
       author:{}
     };
   }

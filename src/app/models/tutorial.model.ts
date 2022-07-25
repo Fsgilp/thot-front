@@ -9,5 +9,6 @@ export class Tutorial {
   attemps?: number;
   vote_ok?: number;
   vote_ko?: number;
+  language?: string;
   author?: any;
 }
