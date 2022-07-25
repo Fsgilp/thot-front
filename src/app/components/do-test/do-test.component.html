@@ -5,7 +5,7 @@
       <label for="question" class="font-weight-bold question" >{{pregunta.question}}</label>
       <div *ngFor="let data of pregunta.answers; let i=index" >
         <label class="option">
-          <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+          <input type="checkbox" [value]="data.answer" (change)="onCheckboxChange($event)" />
           {{data.answer}}
         </label>
       </div>

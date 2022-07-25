@@ -54,8 +54,10 @@ export class DoTestComponent implements OnInit {
     let count: number = 0;
 
     this.pregunta.answers.filter((d:any) => {
+      console.log(d);
       this.form.value.checkArray.filter((s:string) => {
-            if (d.value === s && !d.ok) {
+          console.log(s);
+            if (d.answer === s && !d.correct) {
                 correcto = false;
                 segunda_validacion = false;
                 return;
@@ -64,7 +66,7 @@ export class DoTestComponent implements OnInit {
     });
 
     this.pregunta.answers.forEach((item: any) => {
-      if(item.ok){
+      if(item.correct){
         count++;
       }
     });
