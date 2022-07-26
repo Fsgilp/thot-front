@@ -28,6 +28,7 @@ export class TutorialDetailsComponent implements OnInit {
     attemps: 0,
     author: {},
     published: false,
+    correccionAutomatica: false,
     questions: []
   };
 
@@ -88,6 +89,7 @@ export class TutorialDetailsComponent implements OnInit {
       keys: this.currentTutorial.keys,
       questions: this.currentTutorial.questions,
       language: this.currentTutorial.language,
+      correccionAutomatica: this.currentTutorial.correccionAutomatica,
       published: status
     };
 

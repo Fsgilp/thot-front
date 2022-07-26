@@ -10,5 +10,6 @@ export class Tutorial {
   vote_ok?: number;
   vote_ko?: number;
   language?: string;
+  correccionAutomatica?:boolean;
   author?: any;
 }

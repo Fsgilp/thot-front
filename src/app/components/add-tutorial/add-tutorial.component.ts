@@ -48,6 +48,7 @@ export class AddTutorialComponent implements OnInit {
     attemps: 0,
     vote_ok: 0,
     vote_ko: 0,
+    correccionAutomatica: false,
     author:{}
   };
   submitted = false;
@@ -99,6 +100,7 @@ export class AddTutorialComponent implements OnInit {
       attemps: this.tutorial.attemps,
       keys: this.keys,
       language: this.selectedLanguage,
+      correccionAutomatica: this.tutorial.correccionAutomatica,
       questions: this.questions
     };
 
@@ -134,6 +136,7 @@ export class AddTutorialComponent implements OnInit {
       vote_ok: 0,
       vote_ko: 0,
       language: "",
+      correccionAutomatica: false,
       author:{}
     };
   }

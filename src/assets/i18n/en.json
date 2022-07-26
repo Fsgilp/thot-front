@@ -56,6 +56,7 @@
     "CRONO": "Tiempo de examen (minutos)",
     "LANGUAGE": "Idioma",
     "LANGUAGES": "Español Inglés",
+    "CORRECCION_AUTOMATICA": "Corrección automatica",
     "KEYS": "Palabras clave",
     "KEYS_ACTUALES": "Etiquetas actuales",
     "KEYS_PROPUESTAS": "Etiquetas propuestas",

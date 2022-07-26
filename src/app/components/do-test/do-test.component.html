@@ -14,7 +14,7 @@
         <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
       </p>
       <button class="btn font-weight-bold question" type="submit" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
-      <!--<button class="btn font-weight-bold" disabled type="button" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>-->
+      <button class="btn font-weight-bold" disabled type="button" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
     </form>
 </div>
 
@@ -28,8 +28,8 @@
         </div>-->
     </div>
   </main>
-  <main>
-    <div class="circle"><p style="color: lime;">OK:{{number_ok}}</p><p style="color: red;">KO:{{number_ko}}</p></div>
+  <main *ngIf="currentTutorial.correccionAutomatica">
+    <div class="circle"><p style="color: rgb(8, 215, 8);">OK:{{number_ok}}</p><p style="color: rgb(209, 9, 9);">KO:{{number_ko}}</p></div>
   </main>
 </div>
 </div>
