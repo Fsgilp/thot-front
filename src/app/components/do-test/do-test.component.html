@@ -14,7 +14,7 @@
         <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
       </p>
       <button class="btn font-weight-bold question" type="submit" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
-      <button class="btn font-weight-bold" disabled type="button" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
+      <button class="btn font-weight-bold" type="button" (click)="next(currentTutorial)" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
     </form>
 </div>
 

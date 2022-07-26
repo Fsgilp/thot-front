@@ -49,6 +49,19 @@ export class DoTestComponent implements OnInit {
     }
   }
 
+  next(_currentTutorial:Tutorial){
+    if(this.conteoPreguntas<this.totalPreguntas){
+      this.conteoPreguntas = this.conteoPreguntas+1;
+      console.log("Next:" + this.conteoPreguntas);
+      this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
+    }else{
+      this.conteoPreguntas = 1;
+      console.log("Next:" + this.conteoPreguntas);
+      this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
+    }
+
+  }
+
   submitForm(){
     let correcto: boolean = true;
     let segunda_validacion: boolean = true;
