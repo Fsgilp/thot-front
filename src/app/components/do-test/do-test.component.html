@@ -6,15 +6,19 @@
       <label for="question" class="font-weight-bold question" >{{pregunta.question}}</label>
       <div *ngFor="let data of pregunta.answers; let i=index" >
         <label class="option">
-          <input #checkboxes type="checkbox" [value]="data._id" (change)="onCheckboxChange($event)" />
+          <input #checkboxes [disabled]="contestadas.has(pregunta._id)" type="checkbox" [value]="data._id" (change)="onCheckboxChange($event)" />
           {{data.answer}}
         </label>
       </div>
-      <p class="error" *ngIf="this.form.controls['checkArray'].errors?.['required']">
+      <p class="error" *ngIf="this.form.controls['checkArray'].errors?.['required'] && !contestadas.has(pregunta._id)">
         <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
       </p>
-      <button class="btn font-weight-bold question" type="button" (click)="submitForm(currentTutorial)" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
+      <p class="error" *ngIf="contestadas.has(pregunta._id)">
+        <em>{{ 'EXAMEN.MENSAJE_PREGUNTA_RESPONDIDA' | translate }}</em>
+      </p>
+      <button class="btn font-weight-bold question" type="button" (click)="submitForm(currentTutorial)" [disabled]="!form.valid" class="responder">{{ 'BUTTONS.RESPONDER' | translate }}</button>
       <button class="btn font-weight-bold" type="button" (click)="next(currentTutorial)" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
+      <button class="btn font-weight-bold" type="button" (click)="enviar(currentTutorial)" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
     </form>
 </div>
 

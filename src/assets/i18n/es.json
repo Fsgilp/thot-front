@@ -16,6 +16,7 @@
     "GUARDAR": "Guardar",
     "GUARDAR_OTRO": "Guardar otro",
     "ENVIAR": "Enviar",
+    "RESPONDER": "Responder",
     "SALTAR_PREGUNTA": "Saltar pregunta",
     "AGREGAR_PREGUNTA": "Agregar pregunta",
     "AGREGAR_RESPUESTA": "Agregar respuesta"
@@ -124,6 +125,8 @@
     "COMPARTIR_MAIL": "Nunca compartiremos tu email sin tu permiso"
   },
   "EXAMEN": {
-    "MENSAJE": "Marca al menos una respuesta"
+    "MENSAJE": "Marca al menos una respuesta",
+    "MENSAJE_ENVIAR": "¿Está seguro que quiere enviar el examen?",
+    "MENSAJE_PREGUNTA_RESPONDIDA": "Pregunta ya respondida. Pase a la siguiente o envie el examen."
   }
 }

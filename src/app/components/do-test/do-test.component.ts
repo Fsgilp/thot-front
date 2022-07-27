@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { Tutorial } from '../../models/tutorial.model';
 
@@ -15,7 +16,7 @@ export class DoTestComponent implements OnInit {
   totalPreguntas:number=0;
   conteoPreguntas:number=1;
   pregunta: any = {};
-  contestadas:Array<boolean>=[];
+  contestadas = new Map();
 
   @ViewChildren("checkboxes") checkboxes: QueryList<ElementRef>;
 
@@ -25,8 +26,13 @@ export class DoTestComponent implements OnInit {
     });
   }
 
-  constructor(private formBuilder: FormBuilder,     private tutorialService: TutorialService,
-    private route: ActivatedRoute) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private tutorialService: TutorialService,
+    private route: ActivatedRoute,
+    private translateService: TranslateService,
+    private router: Router
+    ) {
     this.form = this.formBuilder.group({
       checkArray: this.formBuilder.array([], [Validators.required]),
     });
@@ -59,33 +65,21 @@ export class DoTestComponent implements OnInit {
   }
 
   next(_currentTutorial:Tutorial){
-    let completo: boolean=false;
-    if(completo){
-      alert("No quedan preguntas");
-      this.pregunta={};
-    }
-    else if(this.conteoPreguntas<this.totalPreguntas && !completo){
+    if(this.conteoPreguntas<this.totalPreguntas){
       this.conteoPreguntas=this.conteoPreguntas+1;
-      let contador:number=0;
-      for (let index = 0; index < this.contestadas.length; index++) {
-        const element = this.contestadas[this.conteoPreguntas-1];
-        if(!element){
-          this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
-          return;
-        }else{
-          contador= contador+1;
-          if(contador==this.totalPreguntas){
-            completo=true;
-            alert("No quedan preguntas por responder");
-            return;
-          }
-        }
-      }
+      this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
     }else {
       this.conteoPreguntas = 1;
       console.log("Next:" + this.conteoPreguntas);
       this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
     }
+  }
+
+  enviar(_currentTutorial:Tutorial){
+    if(confirm(this.translateService.instant('EXAMEN.MENSAJE_ENVIAR'))) {
+      console.log("Enviando el examen");
+    }
+    this.router.navigate(['/tests']);
 
   }
 
@@ -93,8 +87,8 @@ export class DoTestComponent implements OnInit {
     let correcto: boolean = true;
     let segunda_validacion: boolean = true;
     let count: number = 0;
-    this.contestadas[this.conteoPreguntas-1]=true;
-    this.conteoPreguntas = this.conteoPreguntas+1;
+    this.contestadas.set(this.pregunta._id,true);
+    //this.conteoPreguntas = this.conteoPreguntas+1;
 
     this.pregunta.answers.filter((d:any) => {
       console.log(d);
@@ -126,6 +120,15 @@ export class DoTestComponent implements OnInit {
     segunda_validacion = true;
     count=0;
     this.uncheckAll();
+    if(this.conteoPreguntas<this.totalPreguntas){
+      this.conteoPreguntas=this.conteoPreguntas+1;
+      this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
+    }else{
+      this.conteoPreguntas = 1;
+      console.log("Next:" + this.conteoPreguntas);
+      this.pregunta = _currentTutorial.questions?_currentTutorial.questions[this.conteoPreguntas-1]:{};
+    }
+
   }
 
   timeLeft: number = 0;
@@ -140,10 +143,6 @@ export class DoTestComponent implements OnInit {
           this.totalPreguntas = this.currentTutorial.questions? this.currentTutorial.questions.length:0;
           this.pregunta = this.currentTutorial.questions?.find(element => element != undefined);
           this.timeLeft = this.currentTutorial.crono? this.currentTutorial.crono:0;
-          for (let index = 0; index < this.totalPreguntas; index++) {
-            this.contestadas.push(false);
-          }
-          console.log(this.contestadas);
           this.startTimer();
         },
         error: (e) => console.error(e)

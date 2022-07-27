@@ -102,7 +102,7 @@ to   {  transform: rotate(270deg) translateX(60px); }
   color:#FC0;
   }
 
-.enviar{
+.responder{
   margin:15px;
   color:white;
   font: bold;
@@ -112,12 +112,12 @@ to   {  transform: rotate(270deg) translateX(60px); }
   border-radius: 16px;
 }
 
-.enviar:disabled{
+.responder:disabled{
   background-color: gray;
   cursor: not-allowed;
 }
 
-.enviar:hover{
+.responder:hover{
   border:#FC0 solid 2px;
   color:#FC0;
 }
@@ -133,6 +133,22 @@ to   {  transform: rotate(270deg) translateX(60px); }
 }
 
 .next:hover{
+  cursor:pointer;
+  border:#FC0 solid 2px;
+  color:#FC0;
+}
+
+.enviar{
+  margin:15px;
+  color:white;
+  font: bold;
+  padding:10px;
+  border: 2px solid black;
+  background-color: rgb(49, 43, 226);
+  border-radius: 16px;
+}
+
+.enviar:hover{
   cursor:pointer;
   border:#FC0 solid 2px;
   color:#FC0;

@@ -135,7 +135,7 @@ export class TutorialDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/tutorials']);
+          this.router.navigate(['/tests']);
         },
         error: (e) => console.error(e)
       });
