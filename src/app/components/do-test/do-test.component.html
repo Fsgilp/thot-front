@@ -2,18 +2,18 @@
 <h4>{{ 'PREGUNTAS.PREGUNTAS' | translate }}:{{conteoPreguntas}}/{{totalPreguntas}}</h4>
 <div class="list row ">
   <div class="col-md-8">
-    <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+    <form [formGroup]="form" novalidate>
       <label for="question" class="font-weight-bold question" >{{pregunta.question}}</label>
       <div *ngFor="let data of pregunta.answers; let i=index" >
         <label class="option">
-          <input type="checkbox" [value]="data.answer" (change)="onCheckboxChange($event)" />
+          <input #checkboxes type="checkbox" [value]="data._id" (change)="onCheckboxChange($event)" />
           {{data.answer}}
         </label>
       </div>
       <p class="error" *ngIf="this.form.controls['checkArray'].errors?.['required']">
         <em>{{ 'EXAMEN.MENSAJE' | translate }}</em>
       </p>
-      <button class="btn font-weight-bold question" type="submit" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
+      <button class="btn font-weight-bold question" type="button" (click)="submitForm(currentTutorial)" [disabled]="!form.valid" class="enviar">{{ 'BUTTONS.ENVIAR' | translate }}</button>
       <button class="btn font-weight-bold" type="button" (click)="next(currentTutorial)" class="next">{{ 'BUTTONS.SALTAR_PREGUNTA' | translate }}</button>
     </form>
 </div>
