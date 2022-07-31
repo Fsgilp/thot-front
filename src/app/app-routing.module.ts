@@ -10,13 +10,17 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { DoTestComponent } from './components/do-test/do-test.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ExamenesComponent } from './examenes/examenes.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dotest', pathMatch: 'full' },
+  { path: '', redirectTo: 'tests', pathMatch: 'full' },
   { path: 'administration', component: AdministrationComponent },
   { path: 'tests', component: ExamenesComponent },
   { path: 'contact', component: ContactFormComponent },
+  { path: 'profile', component: PerfilComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'tutorials', component: TutorialsListComponent },
   { path: 'tutorials/:id', component: TutorialDetailsComponent },
   { path: 'add', component: AddTutorialComponent },

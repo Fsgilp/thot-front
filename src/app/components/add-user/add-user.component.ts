@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -29,7 +30,7 @@ export class AddUserComponent implements OnInit {
  * created.
  * @param {UserService} userService - UserService
  */
-  constructor(private userService: UserService, private translateService: TranslateService) { }
+  constructor(private userService: UserService, private translateService: TranslateService, private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -52,6 +53,7 @@ export class AddUserComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.submitted = true;
+          this.router.navigate(['/login']);
         },
         error: (e) => console.error(e)
       });

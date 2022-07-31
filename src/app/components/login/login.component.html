@@ -1,0 +1,34 @@
+<div class="container">
+<!-- Creates the bootstrap modal where the image will appear -->
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">{{ 'LINKS.LOGIN' | translate }}</h4>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label>{{ 'USUARIOS.EMAIL' | translate }}</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted }" />
+            </div>
+            <div class="form-group">
+                <label>{{ 'USUARIOS.PASSWORD' | translate }}</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted}" />
+              </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember"> {{ 'BUTTONS.REMEMBER_ME' | translate }}
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary margencito_total">{{ 'BUTTONS.ENVIAR' | translate }}</button>
+          <button (click)="irRegistro()" type="button" class="btn btn-secondary margencito_total">{{ 'LINKS.AÑADIR_USUARIO' | translate }}</button>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">{{ 'BUTTONS.CANCELAR' | translate }}</button>
+    </div>
+  </div>
+</div>
+</div>

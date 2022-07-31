@@ -17,6 +17,7 @@
     "GUARDAR_OTRO": "Guardar otro",
     "ENVIAR": "Submit",
     "RESPONDER": "Responder",
+    "REMEMBER_ME": "Remember me",
     "SALTAR_PREGUNTA": "Skip question",
     "AGREGAR_PREGUNTA": "Add question",
     "AGREGAR_RESPUESTA": "Add answer"
@@ -35,7 +36,8 @@
     "HACER_EXAMEN": "Do test"
   },
   "GENERICO": {
-    "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?"
+    "MENSAJE_CONFIRMACIÓN": "¿Seguro que quieres realizar esta acción?",
+    "MENSAJE_LOGIN": "Please login."
   },
   "ADMINISTRATION":{
     "ADMINISTRATION": "Administración",
@@ -81,6 +83,7 @@
     "BUSCAR_POR_EMPRESA": "Buscar por nombre de empresa",
     "BUSCAR_POR_EMAIL": "Buscar por correo electrónico",
     "BUSCAR_POR_ROL": "Buscar por rol",
+    "ROLES": "Roles",
     "EMAIL": "Email",
     "NOMBRE": "Nombre",
     "APELLIDOS": "Apellidos",

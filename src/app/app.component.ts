@@ -34,7 +34,6 @@ export class AppComponent {
   ) {
     translate.addLangs(['es', 'en']);
     translate.setDefaultLang(this.selectedLanguage);
-    //const browserLang = translate.getBrowserLang();
     translate.use(this.selectedLanguage);
   }
 

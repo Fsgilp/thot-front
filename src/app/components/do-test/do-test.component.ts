@@ -78,8 +78,8 @@ export class DoTestComponent implements OnInit {
   enviar(_currentTutorial:Tutorial){
     if(confirm(this.translateService.instant('EXAMEN.MENSAJE_ENVIAR'))) {
       console.log("Enviando el examen");
+      this.router.navigate(['/tests']);
     }
-    this.router.navigate(['/tests']);
 
   }
 

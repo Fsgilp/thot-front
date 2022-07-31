@@ -23,6 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AdministrationComponent } from './administration/administration.component';
 import { ExamenesComponent } from './examenes/examenes.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { LoginComponent } from './components/login/login.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,7 +41,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactFormComponent,
     DoTestComponent,
     AdministrationComponent,
-    ExamenesComponent
+    ExamenesComponent,
+    PerfilComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
