@@ -44,6 +44,10 @@ export class UserService {
     return this.http.get<User[]>(`${baseUrl}?company_name=${company_name}`);
   }
 
+  findByCif(cif: any): Observable<User[]> {
+    return this.http.get<User[]>(`${baseUrl}/company?cif=${cif}`);
+  }
+
   findByRole(rol: any): Observable<User[]> {
     return this.http.get<User[]>(`${baseUrl}?rol=${rol}`);
   }

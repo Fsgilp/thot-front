@@ -17,6 +17,7 @@ export class UsersListComponent implements OnInit {
   email = '';
   rol = '';
   company_name = '';
+  cif='';
 
   constructor(private userService: UserService,
     private translateService: TranslateService) { }
@@ -92,6 +93,21 @@ export class UsersListComponent implements OnInit {
           this.users = data;
           console.log(data);
           this.company_name = "";
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  searchCIF(): void {
+    this.currentUser = {};
+    this.currentIndex = -1;
+
+    this.userService.findByCif(this.cif)
+      .subscribe({
+        next: (data) => {
+          this.users = data;
+          console.log(data);
+          this.cif = "";
         },
         error: (e) => console.error(e)
       });

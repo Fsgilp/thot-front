@@ -17,6 +17,7 @@ export class AppComponent {
   title = 'Thot Application';
   private roles: string[] = [];
   isLoggedIn = false;
+  isAdmin = false;
   showAdminBoard = false;
   showUserBoard = false;
   showModeratorBoard = false;
@@ -39,8 +40,9 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
+    this.isAdmin = this.storageService.isAdmin();
 
-    if (this.isLoggedIn) {
+    /*if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       this.roles = user.roles;
 
@@ -49,20 +51,11 @@ export class AppComponent {
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
-    }
+    }*/
   }
 
   logout(): void {
-    this.authService.logout().subscribe({
-      next: res => {
-        console.log(res);
-        this.storageService.clean();
-      },
-      error: err => {
-        console.log(err);
-      }
-    });
-
+    this.storageService.clean();
     window.location.reload();
   }
 

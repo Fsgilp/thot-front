@@ -1,12 +1,17 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
     <h3>
-      <strong>{{ currentUser.username }}</strong> {{ 'LINKS.PROFILE' | translate }}
+      {{ 'LINKS.PROFILE' | translate }}: <strong>{{ currentUser.name }} {{ currentUser.surname }}</strong>
     </h3>
   </header>
   <p>
     <strong>{{ 'USUARIOS.EMAIL' | translate }}:</strong>
     {{ currentUser.email }}
+  </p>
+
+  <p *ngIf="currentUser.company">
+    <strong>{{ 'USUARIOS.COMPANY_ONLY' | translate }}:</strong>
+    {{ currentUser.company.cif }} - {{ currentUser.company.name }}
   </p>
   <strong>{{ 'USUARIOS.ROLES' | translate }}:</strong>
   <ul>

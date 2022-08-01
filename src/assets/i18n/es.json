@@ -82,6 +82,7 @@
     "BUSCAR_POR_EMPRESA": "Buscar por nombre de empresa",
     "BUSCAR_POR_EMAIL": "Buscar por correo electrónico",
     "BUSCAR_POR_ROL": "Buscar por rol",
+    "BUSCAR_EMPRESAS": "Buscar empresas. Introducir CIF.",
     "ROLES": "Permisos",
     "EMAIL": "Correo electrónico",
     "NOMBRE": "Nombre",
@@ -89,6 +90,7 @@
     "PASSWORD": "Contraseña",
     "CONFIRMA_PASSWORD": "Confirme password",
     "PASSWORD_NO_COINCIDE": "Los passwords no coinciden",
+    "COMPANY_ONLY": "Empresa",
     "COMPANY" : {
       "CIF": "CIF",
       "NAME": "Nombre de la empresa"

@@ -21,6 +21,7 @@ export class AddUserComponent implements OnInit {
     password: '',
     company: {},
     roles: [],
+    isCompany: false,
     active: false
   };
   submitted = false;
@@ -44,6 +45,7 @@ export class AddUserComponent implements OnInit {
       surname: this.user.surname,
       password: this.user.password,
       company: this.user.company,
+      isCompany: this.user.isCompany,
       roles: ["usuario"]
     };
 
@@ -79,6 +81,7 @@ export class AddUserComponent implements OnInit {
       password: '',
       company: {},
       roles: [],
+      isCompany: false,
       active: false
     };
   }

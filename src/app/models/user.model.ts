@@ -7,5 +7,6 @@ export class User {
   company?: any;
   tests?: [];
   active?: boolean;
+  isCompany?: boolean;
   roles?: [];
 }

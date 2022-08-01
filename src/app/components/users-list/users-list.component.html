@@ -23,6 +23,25 @@
       <input
         type="text"
         class="form-control"
+        placeholder="{{ 'USUARIOS.BUSCAR_EMPRESAS' | translate }}"
+        [(ngModel)]="cif"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchCIF()"
+        >
+        {{ 'BUTTONS.BUSCAR' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
         placeholder="{{ 'USUARIOS.BUSCAR_POR_EMPRESA' | translate }}"
         [(ngModel)]="company_name"
       />
