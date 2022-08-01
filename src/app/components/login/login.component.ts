@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   userAux:User=new User();
+  isLogged = true;
+
 
   constructor(private formBuilder: FormBuilder,  private router: Router, private authService: AuthService, private storageService: StorageService) {
     let user = this.storageService.getUserLocal();
@@ -23,6 +25,8 @@ export class LoginComponent implements OnInit {
       this.userAux.email=user.email;
       this.userAux.password=user.password;
     }
+    this.isLogged = !this.storageService.isLoggedIn();
+
   }
 
   show()
@@ -43,6 +47,9 @@ export class LoginComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(6)]],
         rememberme: ['', []]
     });
+    if(!this.isLogged){
+      this.router.navigate(['/tests']);
+    }
 }
 // convenience getter for easy access to form fields
 get f() { return this.registerForm.controls; }
@@ -69,7 +76,6 @@ onSubmit() {
             this.storageService.saveUser(res[0]);
 
             this.showModal = false;
-            this.router.navigate(['/tests']);
             window.location.reload();
           }
         },
