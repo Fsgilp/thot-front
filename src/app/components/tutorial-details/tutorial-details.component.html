@@ -17,6 +17,10 @@
       {{ currentTutorial.attemps }}
     </div>
     <div>
+      <label><strong>{{ 'EXAMENES.PREGUNTAS_APROBADO' | translate }}:</strong></label>
+      {{ currentTutorial.passed }}
+    </div>
+    <div>
       <label><strong>{{ 'EXAMENES.LANGUAGE' | translate }}:</strong></label>
       {{ currentTutorial.language }}
     </div>
@@ -38,10 +42,10 @@
     </a>
     <a
       class="btn btn-info margencito_total"
-      routerLink="/dotest/{{ currentTutorial.id }}"
-      *ngIf="admin"
+      (click)="apuntarse(currentTutorial.id)"
+      *ngIf="admin && !currentUser.isCompany"
     >
-    {{ 'LINKS.HACER_EXAMEN' | translate }}
+    {{ 'LINKS.APUNTARSE' | translate }}
     </a>
   </div>
 
@@ -101,6 +105,17 @@
                     required
                     [(ngModel)]="currentTutorial.attemps"
                     name="attemps"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="description" class="margencito">{{ 'EXAMENES.PREGUNTAS_APROBADO' | translate }}: </label>
+                  <input
+                    class="form-control margencito"
+                    type="number"
+                    id="passed"
+                    required
+                    [(ngModel)]="currentTutorial.passed"
+                    name="passed"
                   />
                 </div>
                 <div class="form-group">

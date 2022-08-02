@@ -5,6 +5,7 @@
     "ELIMINAR_TODOS": "Delete all",
     "CANCELAR": "Cancel",
     "ACEPTAR": "Acept",
+    "REINTENTAR": "Reintentar",
     "VER_DETALLES": "See details",
     "BUSCAR": "Find",
     "EDITAR": "Edit",
@@ -18,6 +19,7 @@
     "ENVIAR": "Submit",
     "RESPONDER": "Responder",
     "REMEMBER_ME": "Remember me",
+    "DESCARGAR_CERTIFICADO": "Descargar certificado",
     "SALTAR_PREGUNTA": "Skip question",
     "AGREGAR_PREGUNTA": "Add question",
     "AGREGAR_RESPUESTA": "Add answer"
@@ -25,6 +27,7 @@
   },
   "LINKS": {
     "EXAMENES": "Tests",
+    "APUNTARSE": "¡Apuntarse!",
     "ADMINISTRATION": "Administration",
     "AÑADIR_EXAMEN": "Add test",
     "USUARIOS": "Users",
@@ -51,6 +54,10 @@
   "EXAMENES": {
     "LISTA": "Lista de exámenes",
     "EXAMEN": "Examen",
+    "ESTA_APROBADO": "¿Está aprobado?",
+    "PREGUNTAS_APROBADO": "Preguntas para aprobar",
+    "APROBADO": "Aprobado",
+    "SUSPENDIDO": "Suspendido",
     "BUSCAR_POR_TITULO": "Buscar por título",
     "BUSCAR_POR_CLAVE": "Buscar por etiqueta",
     "BUSCAR_POR_AUTOR": "Buscar por autor",

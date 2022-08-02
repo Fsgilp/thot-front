@@ -1,3 +1,4 @@
+import { Tutorial } from './tutorial.model';
 export class User {
   id?: any;
   email?: string;
@@ -5,7 +6,7 @@ export class User {
   surname?: string;
   password?: string;
   company?: any;
-  tests?: [];
+  tests?: [Tutorial];
   active?: boolean;
   isCompany?: boolean;
   roles?: [];

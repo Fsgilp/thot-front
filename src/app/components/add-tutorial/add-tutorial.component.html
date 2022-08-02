@@ -60,7 +60,18 @@
     </div>
 
       <div class="form-group">
-        <div>
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="description" class="margencito">{{ 'EXAMENES.PREGUNTAS_APROBADO' | translate }}: </label>
+            <input
+              class="form-control margencito"
+              type="number"
+              id="passed"
+              required
+              [(ngModel)]="tutorial.passed"
+              name="passed"
+            />
+          </div>
             <div class="form-inline">
               <label for="key" class="col-xs-2 control-label margencito">{{ 'EXAMENES.KEY' | translate }}:</label>
                 <div class="form-group">

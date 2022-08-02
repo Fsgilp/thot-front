@@ -12,4 +12,5 @@ export class Tutorial {
   language?: string;
   correccionAutomatica?:boolean;
   author?: any;
+  passed?: number;
 }

@@ -11,11 +11,18 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class UserDetailsComponent implements OnInit {
 
+  confirma_password="";
+
   @Input() viewMode = false;
 
   @Input() currentUser: User = {
     email: '',
     name: '',
+    surname: '',
+    password: '',
+    company: {},
+    roles: [],
+    isCompany: false,
     active: false
   };
 
@@ -69,17 +76,24 @@ export class UserDetailsComponent implements OnInit {
 
   updateUser(): void {
     this.message = '';
-
-    this.userService.update(this.currentUser.id, this.currentUser)
+    if(this.confirma_password==this.currentUser.password){
+      this.userService.update(this.currentUser.id, this.currentUser)
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.message = res.message ? res.message :  this.translateService.instant(
             'EXAMENES.MENSAJE_EDICION'
           );
+          this.confirma_password = "";
         },
         error: (e) => console.error(e)
       });
+    }
+    else{
+      this.message = this.translateService.instant(
+        'USUARIOS.PASSWORD_NO_COINCIDE'
+      );
+    }
+
   }
 
   deleteUser(): void {
@@ -87,7 +101,7 @@ export class UserDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/users']);
+          this.router.navigate(['/administration']);
         },
         error: (e) => console.error(e)
       });

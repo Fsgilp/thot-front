@@ -8,6 +8,10 @@
       <label><strong>{{ 'USUARIOS.NOMBRE' | translate }}:</strong></label>
       {{ currentUser.name }}
     </div>
+    <!--<div ngIf="currentUser.company">
+      <label><strong>{{ 'USUARIOS.COMPANY_ONLY' | translate }}:</strong></label>
+      {{ currentUser.company.name }}
+    </div>-->
     <div>
       <label><strong>{{ 'USUARIOS.STATUS' | translate }}:</strong></label>
       {{ (currentUser.active ? "USUARIOS.ACTIVO" : "USUARIOS.INACTIVO") | translate }}
@@ -51,6 +55,29 @@
           name="name"
         />
       </div>
+      <div class="form-group">
+        <label for="password">{{ 'USUARIOS.PASSWORD' | translate }}</label>
+        <input
+          class="form-control"
+          id="password"
+          type="password"
+          required
+          [(ngModel)]="currentUser.password"
+          name="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirma_password">{{ 'USUARIOS.CONFIRMA_PASSWORD' | translate }}</label>
+        <input
+          class="form-control"
+          id="confirma_password"
+          type="password"
+          required
+          [(ngModel)]="confirma_password"
+          name="confirma_password"
+        />
+      </div>
 
       <div class="form-group">
         <label><strong>{{ 'USUARIOS.STATUS' | translate }}:</strong></label>
@@ -88,7 +115,7 @@
     </button>
     <!--<p>{{ message }}</p>-->
   </div>
-
+  <p>{{ message }}</p>
   <div *ngIf="!currentUser.id">
     <br />
     <p>{{ 'USUARIOS.ERROR_ACCESO' | translate }}</p>
