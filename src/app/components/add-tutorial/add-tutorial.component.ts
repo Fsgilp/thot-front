@@ -93,7 +93,6 @@ export class AddTutorialComponent implements OnInit {
    */
   saveTutorial(): void {
 
-
     const data = {
       title: this.tutorial.title,
       description: this.tutorial.description,
@@ -106,20 +105,34 @@ export class AddTutorialComponent implements OnInit {
       passed: this.tutorial.passed
     };
 
-    this.tutorialService.create(data)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.submitted = true;
-          this.questions=[];
-          this.datos=[];
-          this.datos2=[];
-          this.keys=[];
-          this.selectedLanguage="";
-          this.tablas.toArray().forEach(data => data.renderRows());
-        },
-        error: (e) => console.error(e)
-      });
+    this.tutorialService.getByTitle(this.tutorial.title)
+    .subscribe({
+      next: (res) => {
+        if(res){
+          alert(this.translateService.instant('EXAMENES.MENSAJE_MISMO_TITULO'));
+        }
+        else{
+          this.tutorialService.create(data)
+          .subscribe({
+            next: (res) => {
+              console.log(res);
+              this.submitted = true;
+              this.questions=[];
+              this.datos=[];
+              this.datos2=[];
+              this.keys=[];
+              this.selectedLanguage="";
+              this.tablas.toArray().forEach(data => data.renderRows());
+            },
+            error: (e) => console.error(e)
+          });
+        }
+      },
+      error: (e) => console.error(e)
+    });
+
+
+
   }
 
   /**

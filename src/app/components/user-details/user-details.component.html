@@ -4,14 +4,14 @@
     <div>
       <label><strong>{{ 'USUARIOS.EMAIL' | translate }}:</strong></label> {{ currentUser.email }}
     </div>
-    <div>
+    <div *ngIf="!currentUser.isCompany">
       <label><strong>{{ 'USUARIOS.NOMBRE' | translate }}:</strong></label>
-      {{ currentUser.name }}
+      {{ currentUser.name }} {{ currentUser.surname }}
     </div>
-    <!--<div ngIf="currentUser.company">
+    <div *ngIf="currentUser.isCompany">
       <label><strong>{{ 'USUARIOS.COMPANY_ONLY' | translate }}:</strong></label>
       {{ currentUser.company.name }}
-    </div>-->
+    </div>
     <div>
       <label><strong>{{ 'USUARIOS.STATUS' | translate }}:</strong></label>
       {{ (currentUser.active ? "USUARIOS.ACTIVO" : "USUARIOS.INACTIVO") | translate }}
@@ -45,15 +45,54 @@
           name="email"
         />
       </div>
+      <div class="form-group" *ngIf="!currentUser.isCompany">
+        <div class="form-inline">
+          <label for="name" class="margencito_total">{{ 'USUARIOS.NOMBRE' | translate }}: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentUser.name"
+            name="name"
+          />
+          <label for="name" class="margencito_total">{{ 'USUARIOS.APELLIDOS' | translate }}: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="surname"
+            [(ngModel)]="currentUser.surname"
+            name="surname"
+          />
+        </div>
+      </div>
       <div class="form-group">
-        <label for="name">{{ 'USUARIOS.NOMBRE' | translate }}</label>
+        <div class="form-inline">
+          <input
+          id="isCompany"
+          type="checkbox"
+          [(ngModel)]="currentUser.isCompany"
+          name="isCompany"
+          class="margencito_total"
+        />
+        <label for="isCompany" class="margencito_total">{{ 'USUARIOS.ES_EMPRESA' | translate }}</label>
+
+          <label for="company_cif" class="margencito_total">{{ 'USUARIOS.COMPANY.CIF' | translate }}: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="company_cif"
+            [(ngModel)]="currentUser.company.cif"
+            name="company_cif"
+          />
+        <label for="company_name" class="margencito_total">{{ 'USUARIOS.COMPANY.NAME' | translate }}: </label>
         <input
           type="text"
           class="form-control"
-          id="name"
-          [(ngModel)]="currentUser.name"
-          name="name"
+          id="company_name"
+          [(ngModel)]="currentUser.company.name"
+          name="company_name"
         />
+        </div>
       </div>
       <div class="form-group">
         <label for="password">{{ 'USUARIOS.PASSWORD' | translate }}</label>

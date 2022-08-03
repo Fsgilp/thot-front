@@ -7,6 +7,7 @@
     "ACEPTAR": "Acept",
     "REINTENTAR": "Reintentar",
     "VER_DETALLES": "See details",
+    "CHANGE_PASSWORD": "Change password",
     "BUSCAR": "Find",
     "EDITAR": "Edit",
     "MODIFICAR": "Update",
@@ -81,12 +82,15 @@
     "MENSAJE_PUBLICAR": "El examen ha sido publicado con éxito",
     "CLICK_EXAMEN": "Por favor, haga click en un examen",
     "MENSAJE_STATUS": "El estatus del examen ha sido actualizado con éxito",
-    "MENSAJE_EDICION": "El examen ha sido actualizado con éxito",
+    "MENSAJE_EDICION": "Actualización correcta",
+    "MENSAJE_EXAMEN_APUNTADO": "¡Ya está apuntado a este examen!",
+    "MENSAJE_MISMO_TITULO": "¡Ya existe un examen con este título!",
     "ERROR_ACCESO": "No se puede acceder al examen requerido"
   },
   "USUARIOS": {
     "LISTA": "Lista de usuarios",
     "USUARIO": "Usuario",
+    "ES_EMPRESA": "¿Es empresa?",
     "BUSCAR_POR_EMPRESA": "Buscar por nombre de empresa",
     "BUSCAR_POR_EMAIL": "Buscar por correo electrónico",
     "BUSCAR_POR_ROL": "Buscar por rol",
@@ -109,7 +113,7 @@
     "MENSAJE_ACTIVAR": "El usuario ha sido activado con éxito",
     "CLICK_USUARIO": "Por favor, haga click en un usuario",
     "MENSAJE_USUARIO": "El estatus del usuario ha sido actualizado con éxito",
-    "MENSAJE_EDICION": "El usuario ha sido actualizado con éxito",
+    "MENSAJE_EDICION": "Actualización correcta",
     "ERROR_ACCESO": "No se puede acceder al usuario requerido"
   },
   "PREGUNTAS":{

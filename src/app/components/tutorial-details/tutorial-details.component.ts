@@ -13,6 +13,7 @@ import { User } from '../../models/user.model';
   styleUrls: ['./tutorial-details.component.css'],
 })
 export class TutorialDetailsComponent implements OnInit {
+  mensaje="";
   keys: any = [];
   keys_eliminar: any = [];
   key: string = '';
@@ -155,19 +156,25 @@ export class TutorialDetailsComponent implements OnInit {
     if (this.currentUser.isCompany) {
       return;
     } else {
-      console.log(id);
       this.tutorialService.get(id).subscribe({
         next: (data2) => {
           tutorialAux = data2;
-          console.log(tutorialAux);
+          tutorialAux.pass=false;
           this.userService.findByEmail(this.currentUser.email).subscribe({
             next: (data) => {
               this.currentUser = data[0];
-              console.log(this.currentUser);
+              //---- Bloque para comprobar que el examen no esté ya apuntado el usuario
+              let tests = this.currentUser.tests?this.currentUser.tests:[];
+              for (let index = 0; index < tests.length; index++) {
+                const titleAux = tests[index].title;
+                if(titleAux==tutorialAux.title){
+                  alert(this.translateService.instant('EXAMENES.MENSAJE_EXAMEN_APUNTADO'));
+                  return;
+                }
+              }
+              //----
+              tutorialAux.id=id;
               this.currentUser.tests?.push(tutorialAux);
-              console.log(this.currentUser.tests);
-              console.log(this.currentUser.id);
-              console.log(this.currentUser);
               this.userService
                 .update(this.currentUser.id, this.currentUser)
                 .subscribe({

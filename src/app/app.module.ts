@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TranslateLoader,
@@ -21,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon'
+
 import { AdministrationComponent } from './administration/administration.component';
 import { ExamenesComponent } from './examenes/examenes.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -66,4 +68,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [TranslateService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

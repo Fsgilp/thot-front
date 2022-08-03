@@ -13,4 +13,5 @@ export class Tutorial {
   correccionAutomatica?:boolean;
   author?: any;
   passed?: number;
+  pass?: boolean;
 }
