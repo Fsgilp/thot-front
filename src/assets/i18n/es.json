@@ -84,6 +84,8 @@
     "MENSAJE_EDICION": "Actualización correcta",
     "MENSAJE_EXAMEN_APUNTADO": "¡Ya está apuntado a este examen!",
     "MENSAJE_MISMO_TITULO": "¡Ya existe un examen con este título!",
+    "MENSAJE_APROBADO": "El examen ya está aprobado",
+    "MENSAJE_INTENTOS": "Ya has superado el número de intentos para el examen",
     "ERROR_ACCESO": "No se puede acceder al examen requerido"
   },
   "USUARIOS": {

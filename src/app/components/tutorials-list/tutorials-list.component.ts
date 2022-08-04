@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class TutorialsListComponent implements OnInit {
 
   _admin = false;
-  tutorials?: Tutorial[];
+  tutorials?: Tutorial[] = [];
   currentTutorial: Tutorial = {};
   currentIndex = -1;
   title = '';

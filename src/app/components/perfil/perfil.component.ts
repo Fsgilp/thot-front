@@ -105,6 +105,9 @@ export class PerfilComponent implements OnInit {
         next: (data2) => {
           this.storageService.saveUser(this.currentUser);
           //this.tablas.toArray().forEach(data => data.renderRows());
+          // ENCONTRAR ID DEL EXAMEN A REALIZAR
+
+          // ENRUTAR PARA HACER EL EXAMEN
         },
         error: (e) => console.error(e),
       });

@@ -58,7 +58,7 @@
   </div>
   <hr>
   <div class="col-md-6">
-    <h4>{{ 'EXAMENES.LISTA' | translate }}</h4>
+    <h4><mat-icon>book</mat-icon>{{ 'EXAMENES.LISTA' | translate }}</h4>
     <ul class="list-group">
       <li
         class="list-group-item"
@@ -66,7 +66,7 @@
         [class.active]="i == currentIndex"
         (click)="setActiveTutorial(tutorial, i)"
       >
-        {{ tutorial.title }}
+      <mat-icon>book</mat-icon>{{ tutorial.title }}
       </li>
     </ul>
 
