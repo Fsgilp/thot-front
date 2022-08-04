@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { Tutorial } from '../../models/tutorial.model';
+import { UserService } from 'src/app/services/user.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-do-test',
@@ -13,6 +16,7 @@ import { Tutorial } from '../../models/tutorial.model';
 export class DoTestComponent implements OnInit {
 
   currentTutorial: Tutorial={};
+  currentUser: User={};
   totalPreguntas:number=0;
   conteoPreguntas:number=1;
   pregunta: any = {};
@@ -29,6 +33,8 @@ export class DoTestComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private tutorialService: TutorialService,
+    private userService: UserService,
+    private storageService: StorageService,
     private route: ActivatedRoute,
     private translateService: TranslateService,
     private router: Router
@@ -37,6 +43,7 @@ export class DoTestComponent implements OnInit {
       checkArray: this.formBuilder.array([], [Validators.required]),
     });
     this.getTutorial(this.route.snapshot.params["id"]);
+    this.currentUser = this.storageService.getUser();
   }
 
   ngOnInit(): void {
@@ -75,12 +82,47 @@ export class DoTestComponent implements OnInit {
     }
   }
 
-  enviar(_currentTutorial:Tutorial){
+  enviar(_currentTutorial:any){
+    console.log("EXAMEN ENVIADO");
+    console.log(_currentTutorial);
     if(confirm(this.translateService.instant('EXAMEN.MENSAJE_ENVIAR'))) {
       console.log("Enviando el examen");
-      this.router.navigate(['/tests']);
+      if(this.number_ok >= _currentTutorial.passed){
+        alert(this.translateService.instant('EXAMENES.MENSAJE_EXAMEN_APROBADO'));
+        this.userService.findByEmail(this.currentUser.email).subscribe({
+          next: (data) => {
+            this.currentUser = data[0];
+            let tests = this.currentUser.tests?this.currentUser.tests:[];
+            for (let index = 0; index < tests.length; index++) {
+              const titleAux = tests[index].title;
+              if(titleAux==_currentTutorial.title){
+                tests[index].passed = true;
+                console.log("ANTES");
+                console.log(this.currentUser.tests);
+                //this.currentUser.tests?.splice(index,1);
+                this.currentUser.tests?.push(tests[index]);
+                console.log("DESPUÉS");
+                console.log(this.currentUser.tests);
+              }
+            }
+            this.userService
+              .update(this.currentUser.id, this.currentUser)
+              .subscribe({
+                next: (data2) => {
+                  this.storageService.saveUser(this.currentUser);
+                  this.router.navigate(['/profile']);
+                },
+                error: (e) => console.error(e),
+              });
+          },
+          error: (e) => console.error(e),
+        });
+      }
+      else{
+        alert(this.translateService.instant('EXAMENES.MENSAJE_EXAMEN_SUSPENDIDO'));
+        this.router.navigate(['/profile']);
+      }
     }
-
   }
 
   submitForm(_currentTutorial:Tutorial){

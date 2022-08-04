@@ -108,14 +108,13 @@ export class AddTutorialComponent implements OnInit {
     this.tutorialService.getByTitle(this.tutorial.title)
     .subscribe({
       next: (res) => {
-        if(res){
+        if(res.existe){
           alert(this.translateService.instant('EXAMENES.MENSAJE_MISMO_TITULO'));
         }
         else{
           this.tutorialService.create(data)
           .subscribe({
             next: (res) => {
-              console.log(res);
               this.submitted = true;
               this.questions=[];
               this.datos=[];

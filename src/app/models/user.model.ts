@@ -6,7 +6,7 @@ export class User {
   surname?: string;
   password?: string;
   company?: any;
-  tests?: [Tutorial];
+  tests?: [any];
   active?: boolean;
   isCompany?: boolean;
   roles?: [];

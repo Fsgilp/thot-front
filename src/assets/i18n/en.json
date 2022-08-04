@@ -87,6 +87,9 @@
     "MENSAJE_MISMO_TITULO": "¡Ya existe un examen con este título!",
     "MENSAJE_APROBADO": "El examen ya está aprobado",
     "MENSAJE_INTENTOS": "Ya has superado el número de intentos para el examen",
+    "MENSAJE_EXAMEN_NO_DISPONIBLE": "Examen no disponible en este momento. Contacte con su administrador.",
+    "MENSAJE_EXAMEN_APROBADO": "Examen aprobado. Sigue progresando. ¡Nos alegramos por ti!",
+    "MENSAJE_EXAMEN_SUSPENDIDO": "Examen suspendido, lo sentimos de veras.",
     "ERROR_ACCESO": "No se puede acceder al examen requerido"
   },
   "USUARIOS": {

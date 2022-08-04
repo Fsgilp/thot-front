@@ -24,7 +24,7 @@ export class TutorialService {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  getByTitle(title: any): Observable<Tutorial> {
+  getByTitle(title: any): Observable<any> {
     return this.http.get(`${baseUrl}/find/title?title=${title}`);
   }
 

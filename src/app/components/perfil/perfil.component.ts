@@ -104,10 +104,20 @@ export class PerfilComponent implements OnInit {
       .subscribe({
         next: (data2) => {
           this.storageService.saveUser(this.currentUser);
-          //this.tablas.toArray().forEach(data => data.renderRows());
           // ENCONTRAR ID DEL EXAMEN A REALIZAR
+          this.tutorialService.getByTitle(title)
+          .subscribe({
+            next: (res) => {
+              if(res.existe){
+                // ENRUTAR PARA HACER EL EXAMEN
+                this.router.navigate(['/dotest/'+res.id]);
 
-          // ENRUTAR PARA HACER EL EXAMEN
+              }else{
+                alert(this.translateService.instant('EXAMENES.MENSAJE_EXAMEN_NO_DISPONIBLE'));
+              }
+            },
+            error: (e) => console.error(e)
+          });
         },
         error: (e) => console.error(e),
       });
