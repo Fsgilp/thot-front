@@ -58,9 +58,32 @@ export class PerfilComponent implements OnInit {
 
   }
 
+
+
   public openPDF(test:Tutorial): void {
-    let DATA: any = document.getElementById('tablas');
-    html2canvas(DATA).then((canvas) => {
+    let DATA2: any = document.getElementById('certificate');
+
+    const createElement = (str: string) => {
+      const el = document.createElement("div");
+      el.innerHTML = str;
+      return el.firstElementChild;
+    };
+
+    let DATA = createElement(`<div id="certificate" style="width:800px; height:600px; padding:20px; text-align:center; border: 10px solid #787878">
+    <div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878"> +
+           <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
+           <br><br>
+           <span style="font-size:25px"><i>This is to certify that</i></span>
+           <br><br>
+           <span style="font-size:30px"><b>`+this.currentUser.name + " " + this.currentUser.surname +`</b></span><br/><br/>
+           <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
+           <span style="font-size:30px">`+test.title+`</span> <br/><br/>
+           <span style="font-size:20px">with score of <b>PASSED</b></span> <br/><br/><br/><br/>
+    </div>
+    </div>`);
+
+    console.log(DATA);
+    html2canvas(DATA2).then((canvas) => {
       let fileWidth = 208;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
