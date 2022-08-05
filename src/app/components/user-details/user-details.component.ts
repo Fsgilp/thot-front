@@ -67,7 +67,7 @@ export class UserDetailsComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.currentUser.active = status;
-          this.message = this.translateService.instant('EXAMENES.MENSAJE_STATUS');
+          this.message = this.translateService.instant('USUARIOS.MENSAJE_EDICION');
         },
         error: (e) => console.error(e)
       });
@@ -79,7 +79,7 @@ export class UserDetailsComponent implements OnInit {
       this.userService.update(this.currentUser.id, this.currentUser)
       .subscribe({
         next: (res) => {
-          this.message = this.translateService.instant('EXAMENES.MENSAJE_EDICION');
+          this.message = this.translateService.instant('USUARIOS.MENSAJE_EDICION');
           this.confirma_password = "";
         },
         error: (e) => console.error(e)

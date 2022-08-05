@@ -128,7 +128,7 @@ to   {  transform: rotate(270deg) translateX(60px); }
   font: bold;
   padding:10px;
   border: 2px solid black;
-  background-color: blueviolet;
+  background-color: rgb(18, 142, 237);
   border-radius: 16px;
 }
 

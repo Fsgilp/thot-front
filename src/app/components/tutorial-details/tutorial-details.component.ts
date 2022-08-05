@@ -21,6 +21,7 @@ export class TutorialDetailsComponent implements OnInit {
   selectedLanguage: string = '';
   languages: any = ['Español | Spanish', 'Inglés | English'];
   currentUser: User = new User();
+  isLogged:boolean = false;
 
   @Input() viewMode = false;
   @Input() admin: boolean = false;
@@ -45,7 +46,9 @@ export class TutorialDetailsComponent implements OnInit {
     private router: Router,
     private storageService: StorageService,
     private userService: UserService
-  ) {}
+  ) {
+    this.isLogged = this.storageService.isLoggedIn();
+  }
 
   ngOnInit(): void {
     if (!this.viewMode) {

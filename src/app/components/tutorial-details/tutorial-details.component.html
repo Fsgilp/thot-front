@@ -43,7 +43,7 @@
     <a
       class="btn btn-info margencito_total"
       (click)="apuntarse(currentTutorial.id)"
-      *ngIf="admin && !currentUser.isCompany"
+      *ngIf="admin && !currentUser.isCompany && isLogged"
     >
     {{ 'LINKS.APUNTARSE' | translate }}
     </a>

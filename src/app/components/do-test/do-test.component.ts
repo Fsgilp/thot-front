@@ -86,6 +86,7 @@ export class DoTestComponent implements OnInit {
     console.log("EXAMEN ENVIADO");
     console.log(_currentTutorial);
     if(confirm(this.translateService.instant('EXAMEN.MENSAJE_ENVIAR'))) {
+      this.stop();
       console.log("Enviando el examen");
       if(this.number_ok >= _currentTutorial.passed){
         alert(this.translateService.instant('EXAMENES.MENSAJE_EXAMEN_APROBADO'));
@@ -100,7 +101,7 @@ export class DoTestComponent implements OnInit {
                 console.log("ANTES");
                 console.log(this.currentUser.tests);
                 //this.currentUser.tests?.splice(index,1);
-                this.currentUser.tests?.push(tests[index]);
+                //this.currentUser.tests?.push(tests[index]);
                 console.log("DESPUÉS");
                 console.log(this.currentUser.tests);
               }
