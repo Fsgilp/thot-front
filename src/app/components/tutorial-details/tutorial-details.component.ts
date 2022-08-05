@@ -183,6 +183,7 @@ export class TutorialDetailsComponent implements OnInit {
                 .subscribe({
                   next: (data2) => {
                     this.storageService.saveUser(this.currentUser);
+                    this.router.navigate(['/profile']);
                   },
                   error: (e) => console.error(e),
                 });

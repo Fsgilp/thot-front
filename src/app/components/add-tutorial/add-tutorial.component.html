@@ -155,7 +155,10 @@
 
         <ng-container matColumnDef="correcta">
           <th mat-header-cell *matHeaderCellDef> {{ 'PREGUNTAS.CORRECTA' | translate }} </th>
-          <td mat-cell *matCellDef="let respuesta"> {{respuesta.correcta}} </td>
+          <td mat-cell *matCellDef="let respuesta">
+            <mat-icon *ngIf="!respuesta.correcta" style="color: red;">cancel</mat-icon>
+            <mat-icon *ngIf="respuesta.correcta" style="color: green;">check</mat-icon>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="borrar">

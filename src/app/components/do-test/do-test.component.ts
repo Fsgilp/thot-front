@@ -97,11 +97,15 @@ export class DoTestComponent implements OnInit {
             for (let index = 0; index < tests.length; index++) {
               const titleAux = tests[index].title;
               if(titleAux==_currentTutorial.title){
-                tests[index].passed = true;
                 console.log("ANTES");
                 console.log(this.currentUser.tests);
-                //this.currentUser.tests?.splice(index,1);
-                //this.currentUser.tests?.push(tests[index]);
+                this.currentUser.tests?.splice(index,1);
+                this.currentUser.tests?.push({
+                  title: _currentTutorial.title,
+                  attemps: _currentTutorial.attemps,
+                  language: _currentTutorial.language,
+                  pass: true
+                });
                 console.log("DESPUÉS");
                 console.log(this.currentUser.tests);
               }
@@ -200,6 +204,8 @@ export class DoTestComponent implements OnInit {
           this.display_time = this.calculateTime(this.timeLeft);
         } else {
           this.stop();
+          alert(this.translateService.instant('EXAMENES.MENSAJE_EXAMEN_SUSPENDIDO'));
+          this.router.navigate(['/profile']);
         }
       },1000)
     }
