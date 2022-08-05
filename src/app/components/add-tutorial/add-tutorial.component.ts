@@ -5,6 +5,8 @@ import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { MatTable } from '@angular/material/table';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from 'src/app/services/storage.service';
+
 
 /* The AddTutorialComponent class is a component class
 that contains the logic for the add-tutorial.component.html template. */
@@ -20,6 +22,8 @@ export class AddTutorialComponent implements OnInit {
   pregunta:string="";
   respuesta:string="";
   correcta:boolean=false;
+  author:any={};
+  user:any={};
   questions:any=[];
   question:any={};
   answers:any=[];
@@ -59,7 +63,7 @@ export class AddTutorialComponent implements OnInit {
  * instantiated and ensures proper initialization of fields in the class and its subclasses.
  * @param {TutorialService} tutorialService - TutorialService
  */
-  constructor(private tutorialService: TutorialService, private translateService: TranslateService) { }
+  constructor(private tutorialService: TutorialService, private translateService: TranslateService, private storageService: StorageService) { }
 
 /**
  * It's a function that takes a string and returns a string.
@@ -93,6 +97,11 @@ export class AddTutorialComponent implements OnInit {
    */
   saveTutorial(): void {
 
+    this.user=this.storageService.getUser();
+    this.author.email= this.user.email;
+    this.author.name= this.user.name;
+    this.author.surname= this.user.surname;
+
     const data = {
       title: this.tutorial.title,
       description: this.tutorial.description,
@@ -102,7 +111,8 @@ export class AddTutorialComponent implements OnInit {
       language: this.selectedLanguage,
       correccionAutomatica: this.tutorial.correccionAutomatica,
       questions: this.questions,
-      passed: this.tutorial.passed
+      passed: this.tutorial.passed,
+      author: this.author
     };
 
     this.tutorialService.getByTitle(this.tutorial.title)
