@@ -61,8 +61,6 @@ export class PerfilComponent implements OnInit {
 
 
   public openPDF(test:Tutorial): void {
-    let DATA2: any = document.getElementById('certificate');
-
     const createElement = (str: string) => {
       const el = document.createElement("div");
       el.innerHTML = str;
@@ -81,16 +79,19 @@ export class PerfilComponent implements OnInit {
            <span style="font-size:20px">with score of <b>PASSED</b></span> <br/><br/><br/><br/>
     </div>
     </div>`);
+    document.getElementById('cont-certificate')?.appendChild(DATA as HTMLElement);
+    let DATA2: any = document.getElementById('cont-certificate');
 
-    console.log(DATA);
+    console.log(DATA2);
     html2canvas(DATA2).then((canvas) => {
+      document.getElementById('cont-certificate')?.removeChild(DATA as HTMLElement);
       let fileWidth = 208;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('certificate.pdf');
+      let PDF = new jsPDF('l', 'mm', 'a5');
+      let position = 17;
+      PDF.addImage(FILEURI, 'PNG', 30, position, fileWidth, fileHeight);
+      PDF.save('certificate_'+ new Date() +'.pdf');
     });
   }
 
