@@ -21,7 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'
-
+// IMPORT STAR RATING MODULE
+import { StarRatingModule } from 'angular-star-rating';
 import { AdministrationComponent } from './administration/administration.component';
 import { ExamenesComponent } from './examenes/examenes.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -56,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    StarRatingModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

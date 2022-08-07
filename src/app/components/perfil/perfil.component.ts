@@ -17,12 +17,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
+  rating:number = 2.63;
   confirma_password="";
   message="";
   currentUser: any;
   datos: Tutorial[] = [];
   datos2: User[] = [];
-  columnas: string[] = ['test','language','passed',"attemps","retry","download"];
+  columnas: string[] = ["download",'test','language',"attemps","retry", 'passed',"vote"];
   columnas2: string[] = ['nombre','email',"test","passed","attemps","download"];
 
   @ViewChildren(MatTable) tablas!: QueryList<any>;
@@ -146,6 +147,78 @@ export class PerfilComponent implements OnInit {
         error: (e) => console.error(e),
       });
 
+  }
+
+  public mensaje($event:any, test:any):void{
+    let ratingElement = document.getElementById(test.title)?.className.match(/(\d+)/);
+    let valor = ratingElement?ratingElement[0]:0;
+    this.currentUser=this.storageService.getUser();
+    for (let index = 0; index < this.currentUser.tests.length; index++) {
+      const titleAux = this.currentUser.tests[index].title;
+      if(titleAux==test.title){
+        this.currentUser.tests?.splice(index,1);
+        this.currentUser.tests?.push({
+          title: test.title,
+          attemps: test.attemps,
+          language: test.language,
+          rating: valor,
+          vote: false,
+          pass: true
+        });
+      }
+    }
+  }
+
+  public vote(test:any):void{
+
+    this.currentUser=this.storageService.getUser();
+    let ratingElement = document.getElementById(test.title)?.className.match(/(\d+)/);
+    let valor = ratingElement?ratingElement[0]:0;
+    let valorNumber = Number(valor);
+
+    console.log(test);
+    this.userService.findByEmail(this.currentUser.email).subscribe({
+      next: (data) => {
+        this.currentUser = data[0];
+        let tests = this.currentUser.tests?this.currentUser.tests:[];
+        for (let index = 0; index < tests.length; index++) {
+          const titleAux = tests[index].title;
+          if(titleAux==test.title){
+            console.log("ANTES");
+            console.log(this.currentUser.tests);
+            this.currentUser.tests?.splice(index,1);
+            this.currentUser.tests?.push({
+              title: test.title,
+              attemps: test.attemps,
+              language: test.language,
+              rating: valorNumber,
+              vote: false,
+              pass: true
+            });
+          }
+        }
+        this.userService
+          .update(this.currentUser.id, this.currentUser)
+          .subscribe({
+            next: (data2) => {
+              this.storageService.saveUser(this.currentUser);
+              // Guardar el voto del tutorial, calculando el average
+              console.log(test.id);
+              this.tutorialService.findByTitle(test.title)
+              .subscribe({
+                next: (res) => {
+                    console.log(res[0]);
+                    //res[0].num_votes?.push(valorNumber);
+                },
+                error: (e) => console.error(e)
+              });
+              //window.location.reload();
+            },
+            error: (e) => console.error(e),
+          });
+      },
+      error: (e) => console.error(e),
+    });
   }
 
 }

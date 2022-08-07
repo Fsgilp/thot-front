@@ -11,3 +11,12 @@ table {
   box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
   padding: 1rem;
 }
+
+th.mat-header-cell, .aprobado {
+  text-align: center !important;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}

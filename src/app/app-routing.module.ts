@@ -14,6 +14,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { LoginComponent } from './components/login/login.component';
 
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'tests', pathMatch: 'full' },
   { path: 'administration', component: AdministrationComponent },

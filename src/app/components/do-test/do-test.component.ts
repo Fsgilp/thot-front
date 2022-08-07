@@ -104,6 +104,8 @@ export class DoTestComponent implements OnInit {
                   title: _currentTutorial.title,
                   attemps: _currentTutorial.attemps,
                   language: _currentTutorial.language,
+                  rating: 0,
+                  vote: false,
                   pass: true
                 });
                 console.log("DESPUÉS");

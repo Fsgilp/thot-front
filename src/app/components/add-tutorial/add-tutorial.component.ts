@@ -54,7 +54,9 @@ export class AddTutorialComponent implements OnInit {
     vote_ko: 0,
     correccionAutomatica: false,
     author:{},
-    passed: 0
+    passed: 0,
+    rating: 0,
+    num_votes: []
   };
   submitted = false;
 
@@ -112,7 +114,9 @@ export class AddTutorialComponent implements OnInit {
       correccionAutomatica: this.tutorial.correccionAutomatica,
       questions: this.questions,
       passed: this.tutorial.passed,
-      author: this.author
+      author: this.author,
+      rating: this.tutorial.rating,
+      num_votes: this.tutorial.num_votes
     };
 
     this.tutorialService.getByTitle(this.tutorial.title)
@@ -162,7 +166,9 @@ export class AddTutorialComponent implements OnInit {
       language: "",
       correccionAutomatica: false,
       author:{},
-      passed: 0
+      passed: 0,
+      rating: 0,
+      num_votes: []
     };
   }
 

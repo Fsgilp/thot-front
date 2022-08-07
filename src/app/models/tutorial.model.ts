@@ -14,4 +14,6 @@ export class Tutorial {
   author?: any;
   passed?: number;
   pass?: boolean;
+  rating?: number;
+  num_votes?: [];
 }

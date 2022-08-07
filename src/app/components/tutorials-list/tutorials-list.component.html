@@ -66,7 +66,9 @@
         [class.active]="i == currentIndex"
         (click)="setActiveTutorial(tutorial, i)"
       >
-      <mat-icon>book</mat-icon>{{ tutorial.title }}
+      <mat-icon>book</mat-icon>
+      {{ tutorial.title }}
+      <star-rating [starType]="'svg'" [rating]="tutorial.rating" readOnly="true"></star-rating>
       </li>
     </ul>
 
