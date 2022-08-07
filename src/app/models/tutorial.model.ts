@@ -15,5 +15,5 @@ export class Tutorial {
   passed?: number;
   pass?: boolean;
   rating?: number;
-  num_votes?: [];
+  num_votes?: [number];
 }

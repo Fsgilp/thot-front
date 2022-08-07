@@ -55,8 +55,7 @@ export class AddTutorialComponent implements OnInit {
     correccionAutomatica: false,
     author:{},
     passed: 0,
-    rating: 0,
-    num_votes: []
+    rating: 0
   };
   submitted = false;
 
@@ -167,8 +166,7 @@ export class AddTutorialComponent implements OnInit {
       correccionAutomatica: false,
       author:{},
       passed: 0,
-      rating: 0,
-      num_votes: []
+      rating: 0
     };
   }
 

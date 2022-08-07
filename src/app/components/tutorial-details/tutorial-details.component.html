@@ -10,7 +10,7 @@
     </div>
     <div>
       <label><strong>{{ 'EXAMENES.NUM_VOTES' | translate }}:</strong></label>
-      {{ currentTutorial.num_votes }}
+      {{ currentTutorial.num_votes?.length }}
     </div>
     <div>
       <label><strong>{{ 'EXAMENES.CRONO' | translate }}:</strong></label>
@@ -28,10 +28,10 @@
       <label><strong>{{ 'EXAMENES.LANGUAGE' | translate }}:</strong></label>
       {{ currentTutorial.language }}
     </div>
-    <!--<div>
+    <div>
       <label><strong>{{ 'USUARIOS.USUARIO' | translate }}:</strong></label>
       {{ currentTutorial.author.email }}
-    </div>-->
+    </div>
     <div>
       <label><strong>{{ 'EXAMENES.STATUS' | translate }}:</strong></label>
       {{ (currentTutorial.published ? "EXAMENES.PUBLICADO" : "EXAMENES.PENDIENTE") | translate }}

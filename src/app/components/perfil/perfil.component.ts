@@ -192,7 +192,7 @@ export class PerfilComponent implements OnInit {
               attemps: test.attemps,
               language: test.language,
               rating: valorNumber,
-              vote: false,
+              vote: true,
               pass: true
             });
           }
@@ -208,11 +208,28 @@ export class PerfilComponent implements OnInit {
               .subscribe({
                 next: (res) => {
                     console.log(res[0]);
-                    //res[0].num_votes?.push(valorNumber);
+                    res[0].num_votes?.push(valorNumber);
+                    let num_votes = res[0].num_votes?.length;
+                    let sumatorio = 0;
+                    if(num_votes && res[0].num_votes){
+                      for (let index = 0; index < num_votes; index++) {
+                        const element = res[0].num_votes[index];
+                        sumatorio = sumatorio + element;
+                      }
+                      res[0].rating = sumatorio/num_votes;
+                    }
+                    this.tutorialService
+                      .update(res[0].id, res[0])
+                      .subscribe({
+                        next: (res) => {
+                          console.log(res);
+                          window.location.reload();
+                        },
+                        error: (e) => console.error(e),
+                      });
                 },
                 error: (e) => console.error(e)
               });
-              //window.location.reload();
             },
             error: (e) => console.error(e),
           });
