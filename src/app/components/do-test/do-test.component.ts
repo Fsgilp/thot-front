@@ -184,11 +184,34 @@ export class DoTestComponent implements OnInit {
   interval: any;
   display_time: string ='00:00';
 
+  shuffle(preguntas:any) {
+    console.log("ANTES");
+    console.log(preguntas);
+    let currentIndex = preguntas.length,  randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [preguntas[currentIndex], preguntas[randomIndex]] = [
+        preguntas[randomIndex], preguntas[currentIndex]];
+    }
+    console.log("DESPUES");
+    console.log(preguntas);
+
+    return preguntas;
+  }
+
   getTutorial(id: string): void {
     this.tutorialService.get(id)
       .subscribe({
         next: (data) => {
           this.currentTutorial = data;
+          this.currentTutorial.questions = this.shuffle(this.currentTutorial.questions);
           this.totalPreguntas = this.currentTutorial.questions? this.currentTutorial.questions.length:0;
           this.pregunta = this.currentTutorial.questions?.find(element => element != undefined);
           this.timeLeft = this.currentTutorial.crono? this.currentTutorial.crono:0;
