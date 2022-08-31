@@ -120,7 +120,7 @@ export class PerfilComponent implements OnInit {
     let tests = this.currentUser.tests;
     for (let index = 0; index < tests.length; index++) {
       const titleAux = tests[index].title;
-      if(titleAux==title){
+      if(titleAux==title && !tests[index].pass){
         tests[index].attemps = tests[index].attemps - 1;
       }
     }
