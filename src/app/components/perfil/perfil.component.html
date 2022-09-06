@@ -116,26 +116,6 @@
           <th mat-header-cell *matHeaderCellDef> {{ 'USUARIOS.EMAIL' | translate }} </th>
           <td mat-cell *matCellDef="let usuario"> {{usuario.email}} </td>
         </ng-container>
-        <ng-container matColumnDef="test">
-          <th mat-header-cell *matHeaderCellDef> {{ 'EXAMENES.EXAMEN' | translate }} </th>
-          <td mat-cell *matCellDef="let usuario"> {{usuario.name}} </td>
-        </ng-container>
-        <ng-container matColumnDef="passed">
-          <th mat-header-cell *matHeaderCellDef> {{ 'EXAMENES.ESTA_APROBADO' | translate }} </th>
-          <td mat-cell *matCellDef="let usuario"> {{usuario.name}} </td>
-        </ng-container>
-        <ng-container matColumnDef="attemps">
-          <th mat-header-cell *matHeaderCellDef> {{ 'EXAMENES.ATTEMPS' | translate }} </th>
-          <td mat-cell *matCellDef="let usuario"> {{usuario.name}} </td>
-        </ng-container>
-        <ng-container matColumnDef="download">
-          <th mat-header-cell *matHeaderCellDef> {{ 'BUTTONS.DESCARGAR_CERTIFICADO' | translate }} </th>
-          <td mat-cell *matCellDef="let usuario">
-            <a class="btn btn-success btn-block margencito_total" (click)="openPDF(usuario)">
-            {{ 'BUTTONS.DESCARGAR_CERTIFICADO' | translate }}
-            </a>
-          </td>
-        </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columnas2"></tr>
         <tr mat-row *matRowDef="let row; columns: columnas2;"></tr>

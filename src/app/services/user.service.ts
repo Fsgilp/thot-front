@@ -51,4 +51,8 @@ export class UserService {
   findByRole(rol: any): Observable<User[]> {
     return this.http.get<User[]>(`${baseUrl}?rol=${rol}`);
   }
+
+  findUsersByCif(cif: any): Observable<User[]> {
+    return this.http.get<User[]>(`${baseUrl}/bycompany/${cif}`);
+  }
 }

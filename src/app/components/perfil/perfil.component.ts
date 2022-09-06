@@ -24,7 +24,7 @@ export class PerfilComponent implements OnInit {
   datos: Tutorial[] = [];
   datos2: User[] = [];
   columnas: string[] = ["download",'test','language',"attemps","retry", 'passed',"vote"];
-  columnas2: string[] = ['nombre','email',"test","passed","attemps","download"];
+  columnas2: string[] = ['nombre','email'];
 
   @ViewChildren(MatTable) tablas!: QueryList<any>;
   @ViewChild('testTable1') tests!: MatTable<Tutorial>;
@@ -39,19 +39,26 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.storageService.getUser();
-    if(this.currentUser.isCompany){
-
-    }else{
-      this.userService.findByEmail(this.currentUser.email)
+    this.userService.findByEmail(this.currentUser.email)
       .subscribe({
         next: (data) => {
           this.currentUser = data[0];
           this.storageService.saveUser(this.currentUser);
+          if(this.currentUser.isCompany){
+            this.userService.findUsersByCif(this.currentUser.company.cif)
+              .subscribe({
+                next: (data) => {
+                  this.datos2 = data;
+                },
+                error: (e) => console.error(e)
+              });
+          }else{
+            this.datos = this.currentUser.tests;
+          }
         },
         error: (e) => console.error(e)
       });
-    this.datos = this.currentUser.tests;
-    }
+
 
     if(this.tablas){
       this.tablas.toArray().forEach(data => data.renderRows());
