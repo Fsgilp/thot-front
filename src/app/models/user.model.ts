@@ -9,5 +9,6 @@ export class User {
   tests?: [any];
   active?: boolean;
   isCompany?: boolean;
+  admin?: boolean;
   roles?: [];
 }

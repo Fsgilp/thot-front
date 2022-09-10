@@ -52,8 +52,8 @@ export class StorageService {
 
   public isAdmin(): boolean {
     let user = window.sessionStorage.getItem(USER_KEY);
-    let retorno = this.isLoggedIn();
-    if (!retorno && user) {
+    let retorno = false;
+    if (this.isLoggedIn() && user) {
       const userObect = JSON.parse(user);
       for (let index = 0; index < userObect.roles.length; index++) {
         const element = userObect.roles[index];

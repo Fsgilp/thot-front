@@ -82,18 +82,27 @@ import { UserDetailsComponent } from &#x27;./components/user-details/user-detail
 import { AddUserComponent } from &#x27;./components/add-user/add-user.component&#x27;;
 import { ContactFormComponent } from &#x27;./components/contact-form/contact-form.component&#x27;;
 import { DoTestComponent } from &#x27;./components/do-test/do-test.component&#x27;;
+import { AdministrationComponent } from &#x27;./administration/administration.component&#x27;;
+import { ExamenesComponent } from &#x27;./examenes/examenes.component&#x27;;
+import { PerfilComponent } from &#x27;./components/perfil/perfil.component&#x27;;
+import { LoginComponent } from &#x27;./components/login/login.component&#x27;;
+
 
 
 const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, redirectTo: &#x27;tutorials&#x27;, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;&#x27;, redirectTo: &#x27;tests&#x27;, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;administration&#x27;, component: AdministrationComponent },
+  { path: &#x27;tests&#x27;, component: ExamenesComponent },
   { path: &#x27;contact&#x27;, component: ContactFormComponent },
+  { path: &#x27;profile&#x27;, component: PerfilComponent },
+  { path: &#x27;login&#x27;, component: LoginComponent },
   { path: &#x27;tutorials&#x27;, component: TutorialsListComponent },
   { path: &#x27;tutorials/:id&#x27;, component: TutorialDetailsComponent },
   { path: &#x27;add&#x27;, component: AddTutorialComponent },
   { path: &#x27;users&#x27;, component: UsersListComponent },
   { path: &#x27;users/:id&#x27;, component: UserDetailsComponent },
   { path: &#x27;user/add&#x27;, component: AddUserComponent },
-  { path: &#x27;dotest&#x27;, component: DoTestComponent }
+  { path: &#x27;dotest/:id&#x27;, component: DoTestComponent }
 ];
 
 @NgModule({

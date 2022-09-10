@@ -220,6 +220,7 @@
 import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
 import { StorageService } from &#x27;./services/storage.service&#x27;;
 import { AuthService } from &#x27;./services/auth.service&#x27;;
+import { UserService } from &#x27;./services/user.service&#x27;;
 
 export interface Idioma {
   value: string;
@@ -235,6 +236,7 @@ export class AppComponent {
   title &#x3D; &#x27;Thot Application&#x27;;
   private roles: string[] &#x3D; [];
   isLoggedIn &#x3D; false;
+  isAdmin &#x3D; false;
   showAdminBoard &#x3D; false;
   showUserBoard &#x3D; false;
   showModeratorBoard &#x3D; false;
@@ -248,40 +250,29 @@ export class AppComponent {
   constructor(
     public translate: TranslateService,
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private userService: UserService
   ) {
     translate.addLangs([&#x27;es&#x27;, &#x27;en&#x27;]);
     translate.setDefaultLang(this.selectedLanguage);
-    //const browserLang &#x3D; translate.getBrowserLang();
     translate.use(this.selectedLanguage);
+    this.userService.findOrCreateAdmin()
+      .subscribe({
+        next: (res) &#x3D;&gt; {
+          console.log(res);
+        },
+        error: (e) &#x3D;&gt; console.error(e)
+      });
   }
 
   ngOnInit(): void {
     this.isLoggedIn &#x3D; this.storageService.isLoggedIn();
-
-    if (this.isLoggedIn) {
-      const user &#x3D; this.storageService.getUser();
-      this.roles &#x3D; user.roles;
-
-      this.showAdminBoard &#x3D; this.roles.includes(&#x27;ROLE_ADMIN&#x27;);
-      this.showUserBoard &#x3D; this.roles.includes(&#x27;ROLE_USER&#x27;);
-      this.showModeratorBoard &#x3D; this.roles.includes(&#x27;ROLE_MODERATOR&#x27;);
-
-      this.username &#x3D; user.username;
-    }
+    console.log(&quot;ADMIN: &quot;  + this.storageService.isAdmin());
+    this.isAdmin &#x3D; this.storageService.isAdmin();
   }
 
   logout(): void {
-    this.authService.logout().subscribe({
-      next: res &#x3D;&gt; {
-        console.log(res);
-        this.storageService.clean();
-      },
-      error: err &#x3D;&gt; {
-        console.log(err);
-      }
-    });
-
+    this.storageService.clean();
     window.location.reload();
   }
 

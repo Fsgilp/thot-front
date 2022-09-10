@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { StorageService } from './services/storage.service';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 export interface Idioma {
   value: string;
@@ -31,27 +32,25 @@ export class AppComponent {
   constructor(
     public translate: TranslateService,
     private authService: AuthService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private userService: UserService
   ) {
     translate.addLangs(['es', 'en']);
     translate.setDefaultLang(this.selectedLanguage);
     translate.use(this.selectedLanguage);
+    this.userService.findOrCreateAdmin()
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
   }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
+    console.log("ADMIN: "  + this.storageService.isAdmin());
     this.isAdmin = this.storageService.isAdmin();
-
-    /*if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showUserBoard = this.roles.includes('ROLE_USER');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      this.username = user.username;
-    }*/
   }
 
   logout(): void {

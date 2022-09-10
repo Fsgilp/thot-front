@@ -55,4 +55,8 @@ export class UserService {
   findUsersByCif(cif: any): Observable<User[]> {
     return this.http.get<User[]>(`${baseUrl}/bycompany/${cif}`);
   }
+
+  findOrCreateAdmin(): Observable<User[]> {
+    return this.http.get<User[]>(`${baseUrl}/admin`);
+  }
 }
