@@ -11,7 +11,7 @@
     "docs:json": "compodoc -p tsconfig.doc.json -e json -d .",
     "docs:serve": "compodoc -p tsconfig.doc.json -s",
     "docs:dev": "compodoc -p tsconfig.doc.json -sw",
-    "heroku-postbuild": "ng build — prod"
+    "heroku-postbuild": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
