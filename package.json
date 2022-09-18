@@ -10,7 +10,8 @@
     "test": "ng test",
     "docs:json": "compodoc -p tsconfig.doc.json -e json -d .",
     "docs:serve": "compodoc -p tsconfig.doc.json -s",
-    "docs:dev": "compodoc -p tsconfig.doc.json -sw"
+    "docs:dev": "compodoc -p tsconfig.doc.json -sw",
+    "heroku-postbuild": "ng build — prod"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +40,7 @@
     "express": "^4.18.1",
     "jspdf": "^2.5.1",
     "ngx-countdown": "^14.0.0",
+    "path": "^0.12.7",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
