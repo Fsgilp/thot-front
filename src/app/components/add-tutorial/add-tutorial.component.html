@@ -89,7 +89,6 @@
                 <div class="form-group">
                   <button class="btn btn-danger" (click)="removeOption()" >{{ 'EXAMENES.REMOVE_KEY' | translate }}</button>
                 </div>
-                <b class="otro_margencito">{{ 'EXAMENES.KEYS' | translate }}:{{keys | json}}</b>
             </div>
         </div>
     </div>
@@ -108,8 +107,6 @@
           </div>
       </div>
   </div>
-    <b class="otro_margencito">{{questions | json}}</b>
-
       <hr>
       <h2>{{ 'PREGUNTAS.PREGUNTAS_ACTUALES' | translate }}</h2>
       <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tablas>
