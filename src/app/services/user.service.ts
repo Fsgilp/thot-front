@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
-const baseUrl = 'http://localhost:8080/api/users';
+
+const baseUrl = 'https://guarded-chamber-42489.herokuapp.com/api/users';
 
 @Injectable({
   providedIn: 'root'
