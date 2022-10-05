@@ -68,24 +68,27 @@
       <div class="form-group">
         <div class="form-inline">
           <input
+          *ngIf="currentUser.company"
           id="isCompany"
           type="checkbox"
           [(ngModel)]="currentUser.isCompany"
           name="isCompany"
           class="margencito_total"
         />
-        <label for="isCompany" class="margencito_total">{{ 'USUARIOS.ES_EMPRESA' | translate }}</label>
+        <label *ngIf="currentUser.company" for="isCompany" class="margencito_total">{{ 'USUARIOS.ES_EMPRESA' | translate }}</label>
 
-          <label for="company_cif" class="margencito_total">{{ 'USUARIOS.COMPANY.CIF' | translate }}: </label>
+          <label *ngIf="currentUser.company" for="company_cif" class="margencito_total">{{ 'USUARIOS.COMPANY.CIF' | translate }}: </label>
           <input
+          *ngIf="currentUser.company"
             type="text"
             class="form-control"
             id="company_cif"
             [(ngModel)]="currentUser.company.cif"
             name="company_cif"
           />
-        <label for="company_name" class="margencito_total">{{ 'USUARIOS.COMPANY.NAME' | translate }}: </label>
+        <label *ngIf="currentUser.company" for="company_name" class="margencito_total">{{ 'USUARIOS.COMPANY.NAME' | translate }}: </label>
         <input
+        *ngIf="currentUser.company"
           type="text"
           class="form-control"
           id="company_name"
@@ -152,7 +155,6 @@
     >
     {{ 'BUTTONS.MODIFICAR' | translate }}
     </button>
-    <!--<p>{{ message }}</p>-->
   </div>
   <p>{{ message }}</p>
   <div *ngIf="!currentUser.id">
